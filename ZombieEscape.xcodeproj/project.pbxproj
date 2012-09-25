@@ -58,6 +58,11 @@
 		C2B3ECCA16076A32005D3F16 /* Socket_GameOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3ECC916076A32005D3F16 /* Socket_GameOverview.m */; };
 		C2B3ECCD16077088005D3F16 /* JoinGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3ECCC16077088005D3F16 /* JoinGameViewController.m */; };
 		C2B5050F16051CAD00EA29F5 /* PlistHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B5050E16051CAD00EA29F5 /* PlistHandler.m */; };
+		C2E7AE5916123CD1007615B2 /* MainMenuCiewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */; };
+		C2E7AE5C16123D15007615B2 /* btnCreateGame_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5B16123D15007615B2 /* btnCreateGame_v1.png */; };
+		C2E7AE5E16123D4A007615B2 /* background_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5D16123D4A007615B2 /* background_v1.png */; };
+		C2E7AE6016124279007615B2 /* btnJoinGame_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5F16124279007615B2 /* btnJoinGame_v1.png */; };
+		C2E7AE6216124CF8007615B2 /* btnOptions_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE6116124CF8007615B2 /* btnOptions_v1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +158,12 @@
 		C2B3ECCC16077088005D3F16 /* JoinGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoinGameViewController.m; path = ZombieGuiTest/JoinGameViewController.m; sourceTree = "<group>"; };
 		C2B5050D16051CAD00EA29F5 /* PlistHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistHandler.h; sourceTree = "<group>"; };
 		C2B5050E16051CAD00EA29F5 /* PlistHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistHandler.m; sourceTree = "<group>"; };
+		C2E7AE5716123CD1007615B2 /* MainMenuCiewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuCiewControllerViewController.h; sourceTree = "<group>"; };
+		C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuCiewControllerViewController.m; sourceTree = "<group>"; };
+		C2E7AE5B16123D15007615B2 /* btnCreateGame_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCreateGame_v1.png; sourceTree = "<group>"; };
+		C2E7AE5D16123D4A007615B2 /* background_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v1.png; sourceTree = "<group>"; };
+		C2E7AE5F16124279007615B2 /* btnJoinGame_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnJoinGame_v1.png; sourceTree = "<group>"; };
+		C2E7AE6116124CF8007615B2 /* btnOptions_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnOptions_v1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +289,10 @@
 		C27951CC160F655500E63970 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2E7AE6116124CF8007615B2 /* btnOptions_v1.png */,
+				C2E7AE5F16124279007615B2 /* btnJoinGame_v1.png */,
+				C2E7AE5D16123D4A007615B2 /* background_v1.png */,
+				C2E7AE5B16123D15007615B2 /* btnCreateGame_v1.png */,
 				C27951D9160F6DB000E63970 /* Launch.png */,
 				C27951DA160F6DB100E63970 /* LaunchRetina.png */,
 				C27951D5160F666C00E63970 /* icon.png */,
@@ -314,6 +329,8 @@
 				19786C5E1600B5730089F833 /* Login_ViewController.m */,
 				3D919EA5160DF88A0006E88E /* MapViewController.h */,
 				3D919EA6160DF88A0006E88E /* MapViewController.m */,
+				C2E7AE5716123CD1007615B2 /* MainMenuCiewControllerViewController.h */,
+				C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -456,6 +473,10 @@
 				C27951DC160F6DB100E63970 /* LaunchRetina.png in Resources */,
 				C27951DE160F6DC000E63970 /* Default-Portrait~ipad.png in Resources */,
 				C27951E0160F6DC800E63970 /* Default-Portrait@2x~ipad.png in Resources */,
+				C2E7AE5C16123D15007615B2 /* btnCreateGame_v1.png in Resources */,
+				C2E7AE5E16123D4A007615B2 /* background_v1.png in Resources */,
+				C2E7AE6016124279007615B2 /* btnJoinGame_v1.png in Resources */,
+				C2E7AE6216124CF8007615B2 /* btnOptions_v1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +552,7 @@
 				3D919EA7160DF88A0006E88E /* MapViewController.m in Sources */,
 				3DF56C71160F263E0089EDF0 /* GameOrganizer.m in Sources */,
 				C27951C8160F40D000E63970 /* LocationManager.m in Sources */,
+				C2E7AE5916123CD1007615B2 /* MainMenuCiewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

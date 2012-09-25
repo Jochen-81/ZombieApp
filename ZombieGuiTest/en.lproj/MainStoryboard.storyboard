@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" id="qSe-1G-Ce9">
-                                <rect key="frame" x="308" y="516" width="152" height="31"/>
+                                <rect key="frame" x="271" y="517" width="338" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -23,14 +23,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A4J-00-VW7">
-                                <rect key="frame" x="215" y="203" width="338" height="266"/>
+                                <rect key="frame" x="271" y="203" width="338" height="266"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <color key="tintColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="-5" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Login" image="btnLogIn_v1.png">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,7 +40,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IP Address" minimumFontSize="17" id="RhR-lN-z20">
-                                <rect key="frame" x="74" y="633" width="153" height="31"/>
+                                <rect key="frame" x="150" y="632" width="338" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -78,22 +78,24 @@
             </objects>
             <point key="canvasLocation" x="-693" y="866"/>
         </scene>
-        <!--View Controller - Main Menu-->
+        <!--Main Menu Ciew Controller View Controller - Main Menu-->
         <scene sceneID="183-ST-yAM">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qlC-Af-wvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="HWC-3Q-eLH" sceneMemberID="viewController">
+                <viewController id="HWC-3Q-eLH" customClass="MainMenuCiewControllerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fp6-tj-n02">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rgs-Qp-h9J">
-                                <rect key="frame" x="356" y="237" width="101" height="37"/>
+                                <rect key="frame" x="384" y="136" width="364" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Join Game">
+                                <color key="tintColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="btnJoinGame_v1.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -103,12 +105,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kOt-8U-FgC">
-                                <rect key="frame" x="312" y="358" width="119" height="37"/>
+                                <rect key="frame" x="158" y="423" width="344" height="231"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Create Game">
+                                <color key="tintColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="btnCreateGame_v1.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,12 +122,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nNL-ST-Sg1">
-                                <rect key="frame" x="421" y="421" width="81" height="37"/>
+                                <rect key="frame" x="238" y="704" width="442" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Options">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="btnOptions_v1.png">
+                                    <color key="titleShadowColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -316,8 +321,43 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btnCreateGame_v1.png" width="556" height="346"/>
+        <image name="btnJoinGame_v1.png" width="586" height="435"/>
         <image name="btnLogIn_v1.png" width="394" height="342"/>
+        <image name="btnOptions_v1.png" width="966" height="264"/>
     </resources>
+    <classes>
+        <class className="Create_GameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Create_GameViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnCreateGameOnClick:"/>
+                <relationship kind="outlet" name="btnCreateGame" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="edtGameName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="JoinGameViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/JoinGameViewController.h"/>
+        </class>
+        <class className="Login_ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Login_ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="edtIPAddressChanged:"/>
+                <relationship kind="action" name="onBtnLoginClick:"/>
+                <relationship kind="outlet" name="edtIPAddress" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="edtUserName" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainMenuCiewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuCiewControllerViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
