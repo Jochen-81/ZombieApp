@@ -63,6 +63,8 @@
 		C2E7AE5E16123D4A007615B2 /* background_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5D16123D4A007615B2 /* background_v1.png */; };
 		C2E7AE6016124279007615B2 /* btnJoinGame_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5F16124279007615B2 /* btnJoinGame_v1.png */; };
 		C2E7AE6216124CF8007615B2 /* btnOptions_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE6116124CF8007615B2 /* btnOptions_v1.png */; };
+		C2E7AE64161255B1007615B2 /* btnCreate_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE63161255B1007615B2 /* btnCreate_v1.png */; };
+		C2E7AE661612568D007615B2 /* background_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE651612568D007615B2 /* background_v2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +166,8 @@
 		C2E7AE5D16123D4A007615B2 /* background_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v1.png; sourceTree = "<group>"; };
 		C2E7AE5F16124279007615B2 /* btnJoinGame_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnJoinGame_v1.png; sourceTree = "<group>"; };
 		C2E7AE6116124CF8007615B2 /* btnOptions_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnOptions_v1.png; sourceTree = "<group>"; };
+		C2E7AE63161255B1007615B2 /* btnCreate_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCreate_v1.png; sourceTree = "<group>"; };
+		C2E7AE651612568D007615B2 /* background_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -289,6 +293,8 @@
 		C27951CC160F655500E63970 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2E7AE651612568D007615B2 /* background_v2.png */,
+				C2E7AE63161255B1007615B2 /* btnCreate_v1.png */,
 				C2E7AE6116124CF8007615B2 /* btnOptions_v1.png */,
 				C2E7AE5F16124279007615B2 /* btnJoinGame_v1.png */,
 				C2E7AE5D16123D4A007615B2 /* background_v1.png */,
@@ -477,6 +483,8 @@
 				C2E7AE5E16123D4A007615B2 /* background_v1.png in Resources */,
 				C2E7AE6016124279007615B2 /* btnJoinGame_v1.png in Resources */,
 				C2E7AE6216124CF8007615B2 /* btnOptions_v1.png in Resources */,
+				C2E7AE64161255B1007615B2 /* btnCreate_v1.png in Resources */,
+				C2E7AE661612568D007615B2 /* background_v2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
