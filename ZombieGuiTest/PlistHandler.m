@@ -118,14 +118,15 @@
 }
 
 
--(NSString*)getGameName{
-    return [plistDictionary valueForKey:@"GameName" ];
+-(int)getGameID{
+    return [[plistDictionary valueForKey:@"GameID" ]intValue ];
 }
 
--(void)setGameName:(NSString*)gameName{
-    [plistDictionary setValue: gameName forKey:@"GameName"];
+-(void)setGameID:(int)gameID{
+    NSString* s = [NSString stringWithFormat:@"%d",gameID];
+    [plistDictionary setValue: s forKey:@"GameID"];
     [self savePlist];
-    NSLog(@"New GameName set: %@", gameName);
+    NSLog(@"New GameID set: %d", gameID);
 }
 
 @end

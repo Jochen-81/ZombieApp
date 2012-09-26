@@ -154,7 +154,9 @@
     //TODO give MapView information if gamer is zombie or not
     
     //TODO only join game if there is a network connection, perhaps look for general solution in NetWorkCom
-    [[NetWorkCom getNetWorkCom] addPlayerToGame:s.gameID];
+    GameOrganizer* gameOrg = [GameOrganizer getGameOrganizer];
+    gameOrg.GamerStatus = [[NetWorkCom getNetWorkCom] addPlayerToGame:s.gameID];
+    gameOrg.GameID= s.gameID ;
     
     
     [self performSegueWithIdentifier: @"segJoinGameToMapView" sender: self];

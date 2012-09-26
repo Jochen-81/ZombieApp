@@ -22,8 +22,8 @@
 - (NSString* ) getServerIPAddress;
 - (void) setServerIPAddress:(NSString *)serverIPAddress;
 
--(NSString*)getGameName;
--(void)setGameName:(NSString*)gameName;
+-(int)getGameID;
+-(void)setGameID:(int)gameID;
 
 + (id)getPlistHandler;
 

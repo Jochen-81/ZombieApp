@@ -14,7 +14,7 @@
 @interface GameOrganizer : NSObject
 @property (strong,nonatomic) NSString* gamerName;
 @property BOOL gamerStatus;
-@property (strong,nonatomic) NSString* GameName;
+@property int GameID;
 
 +(id)getGameOrganizer;
 -(void)reset;

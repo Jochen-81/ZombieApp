@@ -16,7 +16,7 @@
 
 @synthesize gamerName = _gamerName;
 @synthesize gamerStatus = _gamerStatus;
-@synthesize GameName =_GameName;
+@synthesize GameID =_GameID;
 
 NetWorkCom* netCom;
 MapViewController* delegate;

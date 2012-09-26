@@ -32,11 +32,11 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      NSLog(@"App will Resign");
-    GameOrganizer* gameOrg = [GameOrganizer getGameOrganizer];
     [[NetWorkCom getNetWorkCom] removePlayer];
     [[NetWorkCom getNetWorkCom] closeConnection];
+    GameOrganizer* gameOrg = [GameOrganizer getGameOrganizer];
     [ gameOrg stop];
-    [[PlistHandler getPlistHandler] setGameName:gameOrg.GameName];
+    [[PlistHandler getPlistHandler] setGameID:gameOrg.GameID];
 
 }
 
@@ -56,9 +56,10 @@
     NetWorkCom * netCom = [NetWorkCom getNetWorkCom];
     [netCom initNetworkComm];
     [netCom createNewPlayer:[plist getUsername]];
-    NSString * gameName = [plist getGameName];
-    if( gameName != nil ){
-     [netCom addPlayerToGame:[gameName intValue]];
+    int gameID = [plist getGameID];
+    if( gameID != nil ){
+        //TODO Zombie state mit übertragen
+        [netCom addPlayerToGame:gameID ];
         [[GameOrganizer getGameOrganizer] startWithpollingMode:NO andDelegate:nil];
     }
 }
