@@ -21,6 +21,7 @@
 		19786C711600B5730089F833 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19786C6F1600B5730089F833 /* InfoPlist.strings */; };
 		19786C741600B5730089F833 /* ZombieGuiTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19786C731600B5730089F833 /* ZombieGuiTestTests.m */; };
 		19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CC1613404E0043DE64 /* OptionsViewController.m */; };
+		19F7A0D0161369F70043DE64 /* Socket_AddGamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */; };
 		3D919EA3160DF7D10006E88E /* PlayerLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA2160DF7D10006E88E /* PlayerLocation.m */; };
 		3D919EA7160DF88A0006E88E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA6160DF88A0006E88E /* MapViewController.m */; };
 		3D919EA9160E0BF90006E88E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D919EA8160E0BF90006E88E /* MapKit.framework */; };
@@ -102,6 +103,8 @@
 		19786C731600B5730089F833 /* ZombieGuiTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZombieGuiTestTests.m; sourceTree = "<group>"; };
 		19F7A0CB1613404E0043DE64 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
 		19F7A0CC1613404E0043DE64 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		19F7A0CE161369F70043DE64 /* Socket_AddGamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket_AddGamer.h; sourceTree = "<group>"; };
+		19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket_AddGamer.m; sourceTree = "<group>"; };
 		3D919EA1160DF7D10006E88E /* PlayerLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLocation.h; sourceTree = "<group>"; };
 		3D919EA2160DF7D10006E88E /* PlayerLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerLocation.m; sourceTree = "<group>"; };
 		3D919EA5160DF88A0006E88E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				C2B3ECC916076A32005D3F16 /* Socket_GameOverview.m */,
 				C27CB706160AF55F002A22FC /* SocketMessage.h */,
 				C27CB707160AF55F002A22FC /* SocketMessage.m */,
+				19F7A0CE161369F70043DE64 /* Socket_AddGamer.h */,
+				19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */,
 			);
 			name = Network;
 			path = ..;
@@ -577,6 +582,7 @@
 				C2E7AE5916123CD1007615B2 /* MainMenuCiewControllerViewController.m in Sources */,
 				C2E7AE6B16125B1E007615B2 /* OwnNavigationController.m in Sources */,
 				19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */,
+				19F7A0D0161369F70043DE64 /* Socket_AddGamer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

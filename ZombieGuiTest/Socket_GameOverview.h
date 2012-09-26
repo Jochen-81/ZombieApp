@@ -9,13 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JsonSerializable.h"
 
-@interface Socket_GameOverview : NSObject <JsonSerializable>{
-    int gameID;
-    NSString *name;
-    int amountGamers;
-    double longitude;
-    double latitude;
-}
+@interface Socket_GameOverview : NSObject <JsonSerializable>
 
 @property(nonatomic) int gameID;
 @property(nonatomic, copy) NSString *name;
