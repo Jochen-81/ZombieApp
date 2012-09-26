@@ -39,7 +39,7 @@
                                     <action selector="onBtnLoginClick:" destination="2" eventType="touchUpInside" id="6MG-1o-qF4"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="IP Address" minimumFontSize="17" id="RhR-lN-z20">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server IP Address" minimumFontSize="17" id="RhR-lN-z20">
                                 <rect key="frame" x="150" y="632" width="338" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -191,17 +191,51 @@
             </objects>
             <point key="canvasLocation" x="1590" y="1331"/>
         </scene>
-        <!--View Controller - Options-->
+        <!--Options View Controller - Options-->
         <scene sceneID="0fs-nS-GtN">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rdo-t9-XQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="1pQ-Rg-iz9" sceneMemberID="viewController">
+                <viewController id="1pQ-Rg-iz9" customClass="OptionsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Em-Vc-HwN">
                         <rect key="frame" x="0.0" y="64" width="768" height="960"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Server IP Address" minimumFontSize="17" id="cKY-RT-oTK">
+                                <rect key="frame" x="20" y="67" width="274" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qG1-ew-nc1">
+                                <rect key="frame" x="20" y="126" width="192" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Reconnect to the Server">
+                                    <color key="titleColor" red="0.40784313725490196" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnReconnectOnClick:" destination="1pQ-Rg-iz9" eventType="touchUpInside" id="gqF-fy-9H4"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" enabled="NO" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Gnk-Ax-eP9">
+                                <rect key="frame" x="635" y="69" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" label="NetworkConnection">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Options" id="JmW-tR-u2a"/>
+                    <connections>
+                        <outlet property="edtIPAddress" destination="cKY-RT-oTK" id="VrM-5G-h4A"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="526" y="2123"/>
@@ -359,6 +393,16 @@
                 <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
+        </class>
+        <class className="OptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="btnReconnectOnClick:"/>
+                <relationship kind="outlet" name="edtIPAddress" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="OwnNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OwnNavigationController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
