@@ -36,7 +36,9 @@
     return _address;
 }
 
-
+- (NSString *)description{
+    return _name;
+}
 
 
 @end

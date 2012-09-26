@@ -23,16 +23,6 @@ GameOrganizer* gameOrg;
 int zoomlvl;
 
 
-- (void)drawPlayer {
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
-        [_mapView removeAnnotation:annotation];
-    }
-    CLLocationCoordinate2D coordinate;
-    coordinate.latitude = 49.23393;
-    coordinate.longitude = 6.980;            
-    PlayerLocation *annotation = [[PlayerLocation alloc] initWithName:@"Zombie" address:@"BRAIN!" coordinate:coordinate] ;
-    [_mapView addAnnotation:annotation];    
-}
 
 -(void)drawGamers:(NSMutableArray*)locations{
     
@@ -46,11 +36,8 @@ int zoomlvl;
     //Find and "decommission" the old pin... (basically flags it for deletion later)
     for (PlayerLocation* annotation in _mapView.annotations) 
     {
-        if (![annotation isKindOfClass:[PlayerLocation class]])
-        {
-            if ([annotation.title isEqualToString:gamerName])
+            if ([annotation.name isEqualToString:gamerName])
                 annotation.decomission = YES;
-        }
     }
     
     //add the new pin...
@@ -70,8 +57,9 @@ int zoomlvl;
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     // locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
     [locationManager startUpdatingLocation]; 
-    //[self defineRegion];
+    [self defineRegion];
     //[self drawPlayer];
+    _mapView.delegate=self;
     gameOrg = [GameOrganizer getGameOrganizer];
     [gameOrg startWithpollingMode:NO andDelegate:self];
     
@@ -91,14 +79,24 @@ int zoomlvl;
 {
     MKAnnotationView* annotationView = nil;
     
-    if (![annotation isKindOfClass:[PlayerLocation class]])
+    if ([annotation isKindOfClass:[PlayerLocation class]])
     {
-        PlayerLocation* annotation = (PlayerLocation*)annotation;
+       PlayerLocation* annotation2 = (PlayerLocation*)annotation;
         
-        //your own details...
+        static NSString *identifier = @"MyView";   
+            
+        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationView == nil) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
         
         //delete any decommissioned pins...
-        [self performSelectorOnMainThread:@selector(deletePin:) withObject:annotation.name waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(deletePin:) withObject:annotation2.name waitUntilDone:NO];
     }
     return annotationView;
     
@@ -108,40 +106,15 @@ int zoomlvl;
 {
     for (PlayerLocation *annotation in _mapView.annotations) 
     {
-        if (![annotation isKindOfClass:[PlayerLocation class]])
-        {
-            if ([annotation.name isEqualToString:stationCode])
-            {  
-                if (annotation.decomission)
-                    [_mapView removeAnnotation:annotation];
-            }
+        if ([annotation.name isEqualToString:stationCode])
+        {  
+            if (annotation.decomission==YES)
+            [_mapView removeAnnotation:annotation];
         }
     }
 }
 
 
-
-/*  ALTER VERSION 
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    
-    static NSString *identifier = @"MyLocation";   
-    if ([annotation isKindOfClass:[PlayerLocation class]]) {
-        
-        MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-        if (annotationView == nil) {
-            annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-        } else {
-            annotationView.annotation = annotation;
-        }
-        annotationView.enabled = YES;
-        annotationView.canShowCallout = YES;
-        
-        return annotationView;
-    }
-    return nil;    
-}
-*/
 
 -(void)defineRegion{
     MKCoordinateRegion region;
@@ -165,33 +138,20 @@ int zoomlvl;
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
     [[NetWorkCom getNetWorkCom] removePlayer];
     NSLog(@"Reset GameOrganizer");
     [gameOrg stop];
     
 }
-
+/*
 - (void)mapView:(MKMapView *)MapView regionDidChangeAnimated:(BOOL)animated {
-           NSLog(@"did ");
-        MKCoordinateRegion region;
-        region.center.latitude = 49.23700;
-        region.center.longitude = 6.98000;
-        region.span.latitudeDelta =0.005;
-        region.span.longitudeDelta =0.005;
-        [MapView setRegion:region animated:YES];
+
 }
 
 - (void)mapView:(MKMapView *)MapView regionWillChangeAnimated:(BOOL)animated {
-    NSLog(@"will ");
-    MKCoordinateRegion region;
-    region.center.latitude = 49.23700;
-    region.center.longitude = 6.98000;
-    region.span.latitudeDelta =0.005;
-    region.span.longitudeDelta =0.005;
-    [MapView setRegion:region animated:YES];
-}
 
+}
+*/
 -(void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }
