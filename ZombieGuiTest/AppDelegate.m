@@ -57,6 +57,7 @@
     [netCom initNetworkComm];
     [netCom createNewPlayer:[plist getUsername]];
     int gameID = [plist getGameID];
+    //TODO dies in eine funktion packen, muss auch bei network reconnect aufgerufen werden. 
     if( gameID != nil ){
         //TODO Zombie state mit übertragen
         [netCom addPlayerToGame:gameID ];
