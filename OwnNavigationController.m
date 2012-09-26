@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 HTW Saarland. All rights reserved.
 //
 
-#import "TestNavigationController.h"
+#import "OwnNavigationController.h"
 
-@interface TestNavigationController ()
+@interface OwnNavigationController ()
 
 @end
 
-@implementation TestNavigationController
+@implementation OwnNavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

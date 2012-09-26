@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E2617" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
@@ -62,11 +62,11 @@
             </objects>
             <point key="canvasLocation" x="-51" y="-518"/>
         </scene>
-        <!--Test Navigation Controller-->
+        <!--Own Navigation Controller-->
         <scene sceneID="LWa-xQ-Olk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T4v-8g-F1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="yLB-k0-mcp" customClass="TestNavigationController" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="yLB-k0-mcp" customClass="OwnNavigationController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="R2Z-Px-f6j"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XGL-Yr-sKv">
                         <autoresizingMask key="autoresizingMask"/>
@@ -359,9 +359,6 @@
                 <relationship kind="outlet" name="locationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
-        </class>
-        <class className="TestNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestNavigationController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

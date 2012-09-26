@@ -66,7 +66,7 @@
 		C2E7AE64161255B1007615B2 /* btnCreate_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE63161255B1007615B2 /* btnCreate_v1.png */; };
 		C2E7AE661612568D007615B2 /* background_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE651612568D007615B2 /* background_v2.png */; };
 		C2E7AE6816125922007615B2 /* background_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE6716125922007615B2 /* background_v3.png */; };
-		C2E7AE6B16125B1E007615B2 /* TestNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7AE6A16125B1E007615B2 /* TestNavigationController.m */; };
+		C2E7AE6B16125B1E007615B2 /* OwnNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,8 +171,8 @@
 		C2E7AE63161255B1007615B2 /* btnCreate_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCreate_v1.png; sourceTree = "<group>"; };
 		C2E7AE651612568D007615B2 /* background_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v2.png; sourceTree = "<group>"; };
 		C2E7AE6716125922007615B2 /* background_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v3.png; sourceTree = "<group>"; };
-		C2E7AE6916125B1E007615B2 /* TestNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNavigationController.h; sourceTree = "<group>"; };
-		C2E7AE6A16125B1E007615B2 /* TestNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNavigationController.m; sourceTree = "<group>"; };
+		C2E7AE6916125B1E007615B2 /* OwnNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnNavigationController.h; sourceTree = "<group>"; };
+		C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,8 +343,8 @@
 				3D919EA6160DF88A0006E88E /* MapViewController.m */,
 				C2E7AE5716123CD1007615B2 /* MainMenuCiewControllerViewController.h */,
 				C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */,
-				C2E7AE6916125B1E007615B2 /* TestNavigationController.h */,
-				C2E7AE6A16125B1E007615B2 /* TestNavigationController.m */,
+				C2E7AE6916125B1E007615B2 /* OwnNavigationController.h */,
+				C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -570,7 +570,7 @@
 				3DF56C71160F263E0089EDF0 /* GameOrganizer.m in Sources */,
 				C27951C8160F40D000E63970 /* LocationManager.m in Sources */,
 				C2E7AE5916123CD1007615B2 /* MainMenuCiewControllerViewController.m in Sources */,
-				C2E7AE6B16125B1E007615B2 /* TestNavigationController.m in Sources */,
+				C2E7AE6B16125B1E007615B2 /* OwnNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
