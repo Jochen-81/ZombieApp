@@ -31,12 +31,12 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    
-    NSLog(@"App will Resign");
-//    [[NetWorkCom getNetWorkCom] removePlayer];
-//    [[NetWorkCom getNetWorkCom] closeConnection];
-//    [[GameOrganizer getGameOrganizer] stop];
-//    // TODO wrtie Gamer state into file;
+     NSLog(@"App will Resign");
+    GameOrganizer* gameOrg = [GameOrganizer getGameOrganizer];
+    [[NetWorkCom getNetWorkCom] removePlayer];
+    [[NetWorkCom getNetWorkCom] closeConnection];
+    [ gameOrg stop];
+    [[PlistHandler getPlistHandler] setGameName:gameOrg.GameName];
 
 }
 
@@ -51,22 +51,25 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     NSLog(@"App will enter foreground");
+    
+    PlistHandler *plist =[PlistHandler getPlistHandler] ;
+    NetWorkCom * netCom = [NetWorkCom getNetWorkCom];
+    [netCom initNetworkComm];
+    [netCom createNewPlayer:[plist getUsername]];
+    NSString * gameName = [plist getGameName];
+    if( gameName != nil ){
+     [netCom addPlayerToGame:[gameName intValue]];
+        [[GameOrganizer getGameOrganizer] startWithpollingMode:NO andDelegate:nil];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-       
-   // PlistHandler *plist =[PlistHandler getPlistHandler] ;
-   // NetWorkCom * netCom = [NetWorkCom getNetWorkCom];
-  //  NSLog(@"App did become actice");
-   // [netCom initNetworkComm];
-   // [netCom createNewPlayer:[plist getUsername]];
-    //if ( [plist getGameName] == nil ){
-     //   
-    //}
-    [[GameOrganizer getGameOrganizer] startWithpollingMode:NO andDelegate:nil];
     
+    NSLog(@"App did become actice");
+    
+   
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

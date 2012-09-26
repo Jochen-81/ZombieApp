@@ -117,4 +117,15 @@
     NSLog(@"New serverIPAddress set: %@", serverIPAddress);
 }
 
+
+-(NSString*)getGameName{
+    return [plistDictionary valueForKey:@"GameName" ];
+}
+
+-(void)setGameName:(NSString*)gameName{
+    [plistDictionary setValue: gameName forKey:@"GameName"];
+    [self savePlist];
+    NSLog(@"New GameName set: %@", gameName);
+}
+
 @end
