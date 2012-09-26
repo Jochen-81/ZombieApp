@@ -20,6 +20,7 @@
 		19786C691600B5730089F833 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19786C4A1600B5730089F833 /* Foundation.framework */; };
 		19786C711600B5730089F833 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 19786C6F1600B5730089F833 /* InfoPlist.strings */; };
 		19786C741600B5730089F833 /* ZombieGuiTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19786C731600B5730089F833 /* ZombieGuiTestTests.m */; };
+		19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CC1613404E0043DE64 /* OptionsViewController.m */; };
 		3D919EA3160DF7D10006E88E /* PlayerLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA2160DF7D10006E88E /* PlayerLocation.m */; };
 		3D919EA7160DF88A0006E88E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA6160DF88A0006E88E /* MapViewController.m */; };
 		3D919EA9160E0BF90006E88E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D919EA8160E0BF90006E88E /* MapKit.framework */; };
@@ -66,7 +67,7 @@
 		C2E7AE64161255B1007615B2 /* btnCreate_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE63161255B1007615B2 /* btnCreate_v1.png */; };
 		C2E7AE661612568D007615B2 /* background_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE651612568D007615B2 /* background_v2.png */; };
 		C2E7AE6816125922007615B2 /* background_v3.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE6716125922007615B2 /* background_v3.png */; };
-		C2E7AE6B16125B1E007615B2 /* TestNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7AE6A16125B1E007615B2 /* TestNavigationController.m */; };
+		C2E7AE6B16125B1E007615B2 /* OwnNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		19786C701600B5730089F833 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		19786C721600B5730089F833 /* ZombieGuiTestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZombieGuiTestTests.h; sourceTree = "<group>"; };
 		19786C731600B5730089F833 /* ZombieGuiTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZombieGuiTestTests.m; sourceTree = "<group>"; };
+		19F7A0CB1613404E0043DE64 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		19F7A0CC1613404E0043DE64 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		3D919EA1160DF7D10006E88E /* PlayerLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLocation.h; sourceTree = "<group>"; };
 		3D919EA2160DF7D10006E88E /* PlayerLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerLocation.m; sourceTree = "<group>"; };
 		3D919EA5160DF88A0006E88E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -171,8 +174,8 @@
 		C2E7AE63161255B1007615B2 /* btnCreate_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCreate_v1.png; sourceTree = "<group>"; };
 		C2E7AE651612568D007615B2 /* background_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v2.png; sourceTree = "<group>"; };
 		C2E7AE6716125922007615B2 /* background_v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_v3.png; sourceTree = "<group>"; };
-		C2E7AE6916125B1E007615B2 /* TestNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNavigationController.h; sourceTree = "<group>"; };
-		C2E7AE6A16125B1E007615B2 /* TestNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNavigationController.m; sourceTree = "<group>"; };
+		C2E7AE6916125B1E007615B2 /* OwnNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OwnNavigationController.h; sourceTree = "<group>"; };
+		C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OwnNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,8 +346,10 @@
 				3D919EA6160DF88A0006E88E /* MapViewController.m */,
 				C2E7AE5716123CD1007615B2 /* MainMenuCiewControllerViewController.h */,
 				C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */,
-				C2E7AE6916125B1E007615B2 /* TestNavigationController.h */,
-				C2E7AE6A16125B1E007615B2 /* TestNavigationController.m */,
+				C2E7AE6916125B1E007615B2 /* OwnNavigationController.h */,
+				C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */,
+				19F7A0CB1613404E0043DE64 /* OptionsViewController.h */,
+				19F7A0CC1613404E0043DE64 /* OptionsViewController.m */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -570,7 +575,8 @@
 				3DF56C71160F263E0089EDF0 /* GameOrganizer.m in Sources */,
 				C27951C8160F40D000E63970 /* LocationManager.m in Sources */,
 				C2E7AE5916123CD1007615B2 /* MainMenuCiewControllerViewController.m in Sources */,
-				C2E7AE6B16125B1E007615B2 /* TestNavigationController.m in Sources */,
+				C2E7AE6B16125B1E007615B2 /* OwnNavigationController.m in Sources */,
+				19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

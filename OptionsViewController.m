@@ -1,18 +1,21 @@
 //
-//  TestNavigationControllerViewController.m
+//  OptionsViewController.m
 //  ZombieEscape
 //
-//  Created by moco on 25.09.12.
+//  Created by Jochen on 26.09.12.
 //  Copyright (c) 2012 HTW Saarland. All rights reserved.
 //
 
-#import "TestNavigationController.h"
+#import "OptionsViewController.h"
+#import "PlistHandler.h"
+#import "NetWorkCom.h"
 
-@interface TestNavigationController ()
+@interface OptionsViewController ()
 
 @end
 
-@implementation TestNavigationController
+@implementation OptionsViewController
+@synthesize edtIPAddress;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,13 +30,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
 }
 
 - (void)viewDidUnload
 {
+    [self setEdtIPAddress:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    edtIPAddress.text = [[PlistHandler getPlistHandler] getServerIPAddress];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -41,4 +50,9 @@
 	return YES;
 }
 
+- (IBAction)btnReconnectOnClick:(id)sender {
+    [[PlistHandler getPlistHandler] setServerIPAddress:edtIPAddress.text];
+    [[NetWorkCom getNetWorkCom] reconnect];
+    
+}
 @end
