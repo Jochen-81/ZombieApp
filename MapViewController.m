@@ -48,7 +48,7 @@ int zoomlvl;
 
 
 - (void)viewDidLoad{
-    
+    NSLog(@"View Did Load");
     _mapView.mapType = MKMapTypeStandard;
    // _MapView.showsUserLocation = YES;
     
@@ -63,6 +63,12 @@ int zoomlvl;
     gameOrg = [GameOrganizer getGameOrganizer];
     [gameOrg startWithpollingMode:NO andDelegate:self];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    NSLog(@"View WIll Appear");
 }
 
 
@@ -141,6 +147,7 @@ int zoomlvl;
     [[NetWorkCom getNetWorkCom] removePlayer];
     NSLog(@"Reset GameOrganizer");
     [gameOrg stop];
+    //TODO Plist set current game = nil
     
 }
 /*

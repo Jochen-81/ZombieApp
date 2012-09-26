@@ -158,10 +158,6 @@ bool read_Ready ;
     
 }
 
--(NSMutableArray*) getGamerlist{
-        
-}
-
 
 
 -(void)writeJson:(NSDictionary*)dict ToStream:(NSOutputStream*)stream{
@@ -207,6 +203,8 @@ bool read_Ready ;
 }
 
 -(void) closeConnection{
+    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"bye" andValue: nil];               
+    [self writeJson:msg.toJson ToStream:outputStream];
     [inputStream close];
     [outputStream close];
 }

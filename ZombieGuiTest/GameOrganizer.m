@@ -55,7 +55,9 @@ volatile bool run;
         [self pollingLifeCicle];
     }else {
         NSLog(@"Non Polling Mode, waiting for Networkevents");
-        [self setdelegate:cont];
+        if(cont!=nil){
+            [self setdelegate:cont];
+        }
         [ netCom startReadingInputStream];
         [ netCom setDelegate:self];
     }
@@ -65,7 +67,7 @@ volatile bool run;
 -(void)stop{
     [self stopLifeCicle];
     [netCom setDelegate:nil];
-    [self setdelegate:nil];
+    // Don´t , is problematic when app goes into background [self setdelegate:nil];
     [netCom StopReadingInputStream];
 }
 
@@ -91,7 +93,7 @@ volatile bool run;
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *dic = [parser objectWithString:stream];
    
-    NSLog(@"Von Server : %@",[dic description]);
+  //  NSLog(@"Von Server : %@",[dic description]);
     NSString* commandString = [ dic objectForKey:@"command"];
     NSMutableArray* gamerLocations = [[NSMutableArray alloc] initWithCapacity:1];
     

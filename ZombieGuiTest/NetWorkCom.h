@@ -31,6 +31,7 @@
 -(BOOL) isConnected;
 -(void) closeConnection;
 -(void) reconnect;
+-(void) initNetworkComm ;
 
 + (id)getNetWorkCom;
 
