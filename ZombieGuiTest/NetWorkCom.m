@@ -114,7 +114,7 @@ bool read_Ready ;
 -(BOOL) addPlayerToGame:(int)gameID withState:(int) state{
     NSString* str_id =[NSString stringWithFormat:@"%d",gameID];
     Socket_AddGamer *s_addGamer = [[Socket_AddGamer alloc] initWithGameID:str_id state:state];
-    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"addGamer" andValue:str_id];               
+    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"addGamer" andValue:s_addGamer];               
     [self writeJson:msg.toJson ToStream:outputStream];
     BOOL humanORzombie = [[inputStream readLine] boolValue];
     NSLog(@"Gamer is human: %d", humanORzombie);
@@ -165,7 +165,7 @@ bool read_Ready ;
 }
 
 
-
+//TODO still the old JSON class
 -(void)writeJson:(NSDictionary*)dict ToStream:(NSOutputStream*)stream{
     
     NSError *error = nil; 
@@ -209,8 +209,11 @@ bool read_Ready ;
 }
 
 -(void) closeConnection{
-    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"bye" andValue: nil];               
-    [self writeJson:msg.toJson ToStream:outputStream];
+    if([self isConnected]){
+    //TODO this fails if there is no connection,app gets stuck
+        SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"bye" andValue: nil];               
+        [self writeJson:msg.toJson ToStream:outputStream];
+    }
     [inputStream close];
     [outputStream close];
 }

@@ -51,6 +51,8 @@
         sockMes.value=val;
     else 
         @throw [NSException exceptionWithName:@"UnhandableValueObject" reason:[[val description] stringByAppendingString:@" is neither a String nor an Object that implements the protocoll JsonSerializable"] userInfo:nil];
+    
+    sockMes.value=val;
          
     return sockMes;
 

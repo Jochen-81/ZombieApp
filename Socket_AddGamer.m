@@ -15,6 +15,7 @@
 - (id)initWithGameID:(NSString*) g_id state:(int) s{
     self.gameID = g_id;
     self.state = s;
+    return self;
 }
 
 @end
