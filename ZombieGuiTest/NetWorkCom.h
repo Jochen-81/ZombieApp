@@ -24,7 +24,7 @@
 -(int) createNewPlayer:(NSString*)playerName ;
 -(int) createNewGame:(NSString*)gameName ;
 -(BOOL) addPlayerToGame:(int)gameID;
--(BOOL) addPlayerToGame:(int)gameID state:(int) state;
+-(BOOL) addPlayerToGame:(int)gameID withState:(int) state;
 -(BOOL) removePlayer;
 -(void) setLocation:(GPSLocation*)loc;
 -(NSMutableArray*) getGamelist;

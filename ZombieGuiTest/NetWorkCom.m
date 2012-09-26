@@ -108,10 +108,10 @@ bool read_Ready ;
 }
 
 -(BOOL) addPlayerToGame:(int)gameID{
-    return [self addPlayerToGame:gameID state:0];
+    return [self addPlayerToGame:gameID withState:0];
 }
 
--(BOOL) addPlayerToGame:(int)gameID state:(int) state{
+-(BOOL) addPlayerToGame:(int)gameID withState:(int) state{
     NSString* str_id =[NSString stringWithFormat:@"%d",gameID];
     Socket_AddGamer *s_addGamer = [[Socket_AddGamer alloc] initWithGameID:str_id state:state];
     SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"addGamer" andValue:str_id];               
