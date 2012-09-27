@@ -17,6 +17,7 @@
 @synthesize gamerName = _gamerName;
 @synthesize gamerStatus = _gamerStatus;
 @synthesize GameID =_GameID;
+bool inGame ;
 
 NetWorkCom* netCom;
 MapViewController* delegate;
@@ -39,14 +40,21 @@ MapViewController* delegate;
 }
 
 
+-(void)stopSendingMyLocation{
+    inGame =false;
+}
+
+-(void)startSendingMyLocation{
+     inGame=true;
+ }
+
 -(void)saveGameStatusAndStop{
     [netCom removePlayer];
-    [netCom closeConnection];
-    //??? REihenfolge unsicher, zuerst streams schliessen oder zuerst die behandlung der events und somit interaktion mit der gui stoppen
     [netCom closeConnection];
     [netCom StopReadingInputStream];
     [[PlistHandler getPlistHandler] setGameID:_GameID];
     [[PlistHandler getPlistHandler] setGamerStatus: self.gamerStatus ];
+    [self stopSendingMyLocation];
 }
 
 -(void)loadGameStatusAndRun{
@@ -57,16 +65,18 @@ MapViewController* delegate;
     if( gameID != 0 ){
         [netCom addPlayerToGame:gameID ];
         [netCom startReadingInputStream];
-
+        [self startSendingMyLocation];
     }
 }
 
 -(void)gamerLeavesGame{
     [netCom removePlayer];
+    _GameID = 0;
 }
 
 -(void)updateMyLocation:(CLLocation*)newLocation{
-    [netCom setLocation:[[GPSLocation alloc]initWithLong:[newLocation coordinate].longitude AndLat:[newLocation coordinate].latitude ]];
+    if(inGame)
+        [netCom setLocation:[[GPSLocation alloc]initWithLong:[newLocation coordinate].longitude AndLat:[newLocation coordinate].latitude ]];
 }
 
 -(void)startWithDelegate:(MapViewController*)cont{
@@ -76,6 +86,7 @@ MapViewController* delegate;
     if(cont!=nil){
         [self setdelegate:cont];
     }
+    [self startSendingMyLocation];
     [netCom startReadingInputStream];
     [ netCom setDelegate:self];
 }
