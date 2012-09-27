@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E2617" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
@@ -207,34 +207,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qG1-ew-nc1">
-                                <rect key="frame" x="20" y="209" width="192" height="37"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="sek-yP-DHV">
+                                <rect key="frame" x="14" y="278" width="262" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Reconnect to the Server">
-                                    <color key="titleColor" red="0.40784313725490196" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <segments>
+                                    <segment title="Connected"/>
+                                    <segment title="Unconnected"/>
+                                </segments>
+                                <color key="tintColor" red="0.40784313729999999" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="btnReconnectOnClick:" destination="1pQ-Rg-iz9" eventType="touchUpInside" id="gqF-fy-9H4"/>
+                                    <action selector="btnReconnectOnClick:" destination="1pQ-Rg-iz9" eventType="valueChanged" id="b13-Py-CqA"/>
+                                    <action selector="sgNetworkConnectionValueChanged:" destination="1pQ-Rg-iz9" eventType="valueChanged" id="6wc-cL-iX7"/>
                                 </connections>
-                            </button>
-                            <switch opaque="NO" contentMode="scaleToFill" enabled="NO" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Gnk-Ax-eP9">
-                                <rect key="frame" x="669" y="172" width="79" height="27"/>
+                            </segmentedControl>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Connecting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8dy-1G-tpM">
+                                <rect key="frame" x="20" y="322" width="132" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" label="NetworkConnection">
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                            </switch>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Options" id="JmW-tR-u2a"/>
                     <connections>
                         <outlet property="edtIPAddress" destination="cKY-RT-oTK" id="VrM-5G-h4A"/>
+                        <outlet property="sgNetworkConnection" destination="sek-yP-DHV" id="z6Z-Qz-RWq"/>
+                        <outlet property="txtConnecting" destination="8dy-1G-tpM" id="4Fa-7G-FxV"/>
                     </connections>
                 </viewController>
             </objects>
@@ -398,7 +398,12 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/OptionsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="btnReconnectOnClick:"/>
+                <relationship kind="action" name="sgNetworkConnectionValueChanged:"/>
+                <relationship kind="action" name="startMyTimer:"/>
+                <relationship kind="action" name="stopMyTimer:"/>
                 <relationship kind="outlet" name="edtIPAddress" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sgNetworkConnection" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="txtConnecting" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="OwnNavigationController" superclassName="UINavigationController">
