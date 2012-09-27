@@ -17,4 +17,7 @@
 
 - (id)initWithGameID:(NSString*) g_id state:(int) s;
 
+-(NSDictionary*) toJson;
++(id)FromJsonToObject:(NSObject*)obj;
+
 @end
