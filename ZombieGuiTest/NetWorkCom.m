@@ -210,12 +210,15 @@ bool read_Ready ;
 
 -(void) closeConnection{
     if([self isConnected]){
-    //TODO this fails if there is no connection,app gets stuck
         SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"bye" andValue: nil];               
         [self writeJson:msg.toJson ToStream:outputStream];
     }
+    // TODO  perhaps move all code into if condition
     [inputStream close];
+    [inputStream.stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+   
     [outputStream close];
+    [outputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
 
 -(void) reconnect{

@@ -25,6 +25,9 @@
 -(int)getGameID;
 -(void)setGameID:(int)gameID;
 
+-(void)setGamerStatus:(int)status;
+-(int)getGamerStatus;
+
 + (id)getPlistHandler;
 
 @end

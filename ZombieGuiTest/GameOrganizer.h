@@ -13,15 +13,15 @@
 
 @interface GameOrganizer : NSObject
 @property (strong,nonatomic) NSString* gamerName;
-@property BOOL gamerStatus;
+@property int gamerStatus;
 @property int GameID;
 
 +(id)getGameOrganizer;
--(void)reset;
--(void)startWithpollingMode:(BOOL)pol andDelegate:(UIViewController*)cont;
--(void)stop;
--(void)createAnotioansFromString:(NSString*)stream;
+-(void)startWithDelegate:(UIViewController*)cont;
+
 -(void)handleInputFromNetwork:(NSString*)stream;
 -(void)updateMyLocation:(CLLocation*)newLocation;
 
+-(void)saveGameStatusAndStop;
+-(void)loadGameStatusAndRun;
 @end

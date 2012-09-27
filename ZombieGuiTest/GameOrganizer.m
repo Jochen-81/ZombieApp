@@ -21,9 +21,6 @@
 NetWorkCom* netCom;
 MapViewController* delegate;
 
-BOOL pollMode ;
-volatile bool run;
-
 + (id)getGameOrganizer {
     static GameOrganizer *gameOrg = nil;
     static dispatch_once_t onceToken;
@@ -42,47 +39,44 @@ volatile bool run;
 }
 
 
+-(void)saveGameStatusAndStop{
+    [netCom removePlayer];
+    [netCom closeConnection];
+    //??? REihenfolge unsicher, zuerst streams schliessen oder zuerst die behandlung der events und somit interaktion mit der gui stoppen
+    [netCom closeConnection];
+    [netCom StopReadingInputStream];
+    [[PlistHandler getPlistHandler] setGameID:_GameID];
+    [[PlistHandler getPlistHandler] setGamerStatus: self.gamerStatus ];
+}
+
+-(void)loadGameStatusAndRun{
+    PlistHandler *plist =[PlistHandler getPlistHandler] ;
+    [netCom reconnect];
+    [netCom createNewPlayer:[plist getUsername]];
+    int gameID = [plist getGameID];
+    if( gameID != 0 ){
+        [netCom addPlayerToGame:gameID ];
+        [netCom startReadingInputStream];
+
+    }
+}
+
+
 -(void)updateMyLocation:(CLLocation*)newLocation{
     [netCom setLocation:[[GPSLocation alloc]initWithLong:[newLocation coordinate].longitude AndLat:[newLocation coordinate].latitude ]];
 }
 
--(void)startWithpollingMode:(BOOL)poll andDelegate:(MapViewController*)cont{
-    pollMode=poll;
+-(void)startWithDelegate:(MapViewController*)cont{
     netCom =[NetWorkCom getNetWorkCom] ;
-    _gamerName = [[PlistHandler getPlistHandler] getUsername];
-    
-    if(poll){
-        NSLog(@"Polling Mode....");
-        [self pollingLifeCicle];
-    }else {
-        NSLog(@"Non Polling Mode, waiting for Networkevents");
-        if(cont!=nil){
-            [self setdelegate:cont];
-        }
-        [ netCom startReadingInputStream];
-        [ netCom setDelegate:self];
+     
+    NSLog(@"Non Polling Mode, waiting for Networkevents");
+    if(cont!=nil){
+        [self setdelegate:cont];
     }
-
+    [netCom startReadingInputStream];
+    [ netCom setDelegate:self];
 }
 
--(void)stop{
-    [self stopLifeCicle];
-    [netCom setDelegate:nil];
-    // Don´t , is problematic when app goes into background [self setdelegate:nil];
-    [netCom StopReadingInputStream];
-}
-
-
--(void)stopLifeCicle{
-    run =NO;
-}
-
--(void) pollingLifeCicle{
-    run =true;
-    while (run){
-       NSLog(@" Von Server zu GameOrganizer : %@ ", [netCom readLineFromInputStream]);
-    }
-}
 
 -(void) setdelegate:(MapViewController*)viewController {
     delegate = viewController;

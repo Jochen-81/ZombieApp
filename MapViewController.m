@@ -61,7 +61,7 @@ int zoomlvl;
     //[self drawPlayer];
     _mapView.delegate=self;
     gameOrg = [GameOrganizer getGameOrganizer];
-    [gameOrg startWithpollingMode:NO andDelegate:self];
+    [gameOrg startWithDelegate:self];
     
 }
 
@@ -144,11 +144,6 @@ int zoomlvl;
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[NetWorkCom getNetWorkCom] removePlayer];
-    NSLog(@"Reset GameOrganizer");
-    [gameOrg stop];
-    //TODO Plist set current game = nil
-    
 }
 /*
 - (void)mapView:(MKMapView *)MapView regionDidChangeAnimated:(BOOL)animated {

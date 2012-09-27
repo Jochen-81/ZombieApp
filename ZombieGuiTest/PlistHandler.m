@@ -129,4 +129,16 @@
     NSLog(@"New GameID set: %d", gameID);
 }
 
+
+-(void)setGamerStatus:(int)status{
+    NSString* s = [NSString stringWithFormat:@"%d",status];
+    [plistDictionary setValue: s forKey:@"GamerStatus"];
+    [self savePlist];
+    NSLog(@"New GamerStatus set: %d", status);
+}
+
+-(int)getGamerStatus{
+    return [[plistDictionary valueForKey:@"GamerStatus" ]intValue ];
+}
+
 @end
