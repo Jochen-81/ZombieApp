@@ -113,10 +113,16 @@ bool read_Ready ;
 
 -(BOOL) addPlayerToGame:(int)gameID withState:(int) state{
     NSString* str_id =[NSString stringWithFormat:@"%d",gameID];
+    gameOrganizer.GameID=gameID;
     Socket_AddGamer *s_addGamer = [[Socket_AddGamer alloc] initWithGameID:str_id state:state];
     SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"addGamer" andValue:s_addGamer];               
     [self writeJson:msg.toJson ToStream:outputStream];
     BOOL humanORzombie = [[inputStream readLine] boolValue];
+    if(humanORzombie ==0){
+        gameOrganizer.gamerStatus = 1;
+    }else {
+        gameOrganizer.gamerStatus =2;
+    }
     NSLog(@"Gamer is human: %d", humanORzombie);
     return humanORzombie;
 }

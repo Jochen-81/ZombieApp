@@ -24,4 +24,6 @@
 
 -(void)saveGameStatusAndStop;
 -(void)loadGameStatusAndRun;
+
+-(void)gamerLeavesGame;
 @end

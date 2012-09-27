@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     
     //init NetWorkCom (a singleton responsible for thet Networkconnection and Communication)
-    [NetWorkCom getNetWorkCom];
+    [[NetWorkCom getNetWorkCom]setDelegate:[GameOrganizer getGameOrganizer] ];
     [LocationManager getLocationManager];
     
     return YES;

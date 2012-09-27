@@ -135,6 +135,7 @@ int zoomlvl;
 
 - (void)viewDidUnload
 {
+    NSLog(@"View Did Unload");
     [self setMapView:nil];
     [self setLocationLabel:nil];
     [super viewDidUnload];
@@ -143,9 +144,10 @@ int zoomlvl;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
+    [gameOrg gamerLeavesGame];
     [super viewWillDisappear:animated];
 }
-/*
+
 - (void)mapView:(MKMapView *)MapView regionDidChangeAnimated:(BOOL)animated {
 
 }
@@ -153,7 +155,7 @@ int zoomlvl;
 - (void)mapView:(MKMapView *)MapView regionWillChangeAnimated:(BOOL)animated {
 
 }
-*/
+
 -(void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
 }

@@ -61,6 +61,9 @@ MapViewController* delegate;
     }
 }
 
+-(void)gamerLeavesGame{
+    [netCom removePlayer];
+}
 
 -(void)updateMyLocation:(CLLocation*)newLocation{
     [netCom setLocation:[[GPSLocation alloc]initWithLong:[newLocation coordinate].longitude AndLat:[newLocation coordinate].latitude ]];
