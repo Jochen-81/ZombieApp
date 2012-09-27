@@ -13,11 +13,10 @@
 #import "NetWorkCom.h"
 
 
-@interface MapViewController :  UIViewController <CLLocationManagerDelegate,MKMapViewDelegate>{
-    CLLocationManager *locationManager;}
+@interface MapViewController :  UIViewController <MKMapViewDelegate,MKAnnotation>{
+}
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) IBOutlet UILabel *locationLabel;
 
 -(void)drawGamers:(NSMutableArray*)PlayerLocation;
 

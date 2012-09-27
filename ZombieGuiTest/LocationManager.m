@@ -7,6 +7,7 @@
 //
 
 #import "LocationManager.h"
+#import "GameOrganizer.h"
 
 @implementation LocationManager
 
@@ -42,6 +43,7 @@
            fromLocation:(CLLocation *)oldLocation
 {
     myLocation = newLocation;
+    [[GameOrganizer getGameOrganizer] updateMyLocation:newLocation];
 }
 
 

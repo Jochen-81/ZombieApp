@@ -26,4 +26,6 @@
 -(void)loadGameStatusAndRun;
 
 -(void)gamerLeavesGame;
+-(void)stopSendingMyLocation;
+-(void)startSendingMyLocation;
 @end
