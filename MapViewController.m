@@ -24,13 +24,18 @@ GameOrganizer* gameOrg;
 
 //////////////////////////////// Draw Annotation Methods //////////////////////
 
+-(void)removeAnnotationOfPlayer:(NSString*)gamerName{
+    for (PlayerLocation* annotation in _mapView.annotations){
+        if ([annotation.name isEqualToString:gamerName])
+            annotation.decomission = YES;
+    }
+    [self performSelectorOnMainThread:@selector(deletePin:) withObject:gamerName waitUntilDone:NO];
+}
 
 -(void)drawGamers:(NSMutableArray*)locations{
-    
     for(PlayerLocation* loc in locations ){
         [ self replacePin:loc.name status:loc.gamerStatus withLocation:loc.coordinate];
     }
-
 }
 
 -(void)replacePin:(NSString *)gamerName  status:(int)status withLocation:(CLLocationCoordinate2D)location {

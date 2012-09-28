@@ -28,4 +28,5 @@
 -(void)gamerLeavesGame;
 -(void)stopSendingMyLocation;
 -(void)startSendingMyLocation;
+-(void)removeGamer:(NSString*)gamerName;
 @end

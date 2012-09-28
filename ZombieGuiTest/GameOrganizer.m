@@ -12,12 +12,14 @@
 #import "PlistHandler.h"
 
 
+
 @implementation GameOrganizer
 
 @synthesize gamerName = _gamerName;
 @synthesize gamerStatus = _gamerStatus;
 @synthesize GameID =_GameID;
 bool inGame ;
+NSMutableArray * gamerList;
 
 NetWorkCom* netCom;
 MapViewController* delegate;
@@ -34,7 +36,7 @@ MapViewController* delegate;
 
 - (id)init{
     if (self = [super init]) {
-               
+        gamerList = [[NSMutableArray alloc] initWithCapacity:1];
     }
     return self;
 }
@@ -96,12 +98,15 @@ MapViewController* delegate;
     delegate = viewController;
 }
 
+
 -(void)handleInputFromNetwork:(NSString*)stream{
     
     // Create SBJSON object to parse JSON
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *dic = [parser objectWithString:stream];
    
+    NSMutableArray* deletionArray = [[NSMutableArray alloc] initWithArray: gamerList]; // clone gameList , everyone is know up for deletion
+    
     NSLog(@"Von Server : %@",[dic description]);
     NSString* commandString = [ dic objectForKey:@"command"];
     NSMutableArray* gamerLocations = [[NSMutableArray alloc] initWithCapacity:1];
@@ -109,6 +114,7 @@ MapViewController* delegate;
     if ([commandString compare:@"listGamers"] ==0){
         
         NSArray* gamerDescription = [dic valueForKey:@"value"];
+        
         for (NSDictionary* dictionary in gamerDescription ){
             CLLocationCoordinate2D location = [[[CLLocation alloc] init ] coordinate];
                         
@@ -117,9 +123,20 @@ MapViewController* delegate;
             location.longitude = longi ;
             location.latitude =lat;
             NSString* gamerName =[dictionary valueForKey:@"gamername"];
+            
+            if( [deletionArray containsObject:gamerName]){ // Already known Gamer
+                [deletionArray removeObject:gamerName]; // remove from Deletion list 
+            }else { // newGamer 
+                [gamerList addObject:gamerName]; // add to gamerList
+            }
+            
             int gamerStatus = [[dictionary valueForKey:@"isZombie"] intValue ];
             PlayerLocation* gamerloc = [[PlayerLocation alloc] initWithName:gamerName status:gamerStatus coordinate:location];
-                [gamerLocations addObject:gamerloc];
+            [gamerLocations addObject:gamerloc];
+        }
+        for (NSString* s in deletionArray){
+            [gamerList removeObject:s]; // Player that are no longer in the game are deleted from the list
+            [delegate removeAnnotationOfPlayer:s]; // pins are removed from the map
         }
         [delegate drawGamers:gamerLocations];
         

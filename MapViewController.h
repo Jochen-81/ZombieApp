@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 -(void)drawGamers:(NSMutableArray*)PlayerLocation;
+-(void)removeAnnotationOfPlayer:(NSString*)gamerName;
 
 @end
