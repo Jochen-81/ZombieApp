@@ -22,6 +22,8 @@
 		19786C741600B5730089F833 /* ZombieGuiTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19786C731600B5730089F833 /* ZombieGuiTestTests.m */; };
 		19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CC1613404E0043DE64 /* OptionsViewController.m */; };
 		19F7A0D0161369F70043DE64 /* Socket_AddGamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */; };
+		3D8C4F7F1615E03D0080335E /* H.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C4F7D1615E03D0080335E /* H.png */; };
+		3D8C4F801615E03D0080335E /* Z.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C4F7E1615E03D0080335E /* Z.png */; };
 		3D919EA3160DF7D10006E88E /* PlayerLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA2160DF7D10006E88E /* PlayerLocation.m */; };
 		3D919EA7160DF88A0006E88E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA6160DF88A0006E88E /* MapViewController.m */; };
 		3D919EA9160E0BF90006E88E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D919EA8160E0BF90006E88E /* MapKit.framework */; };
@@ -105,6 +107,8 @@
 		19F7A0CC1613404E0043DE64 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		19F7A0CE161369F70043DE64 /* Socket_AddGamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket_AddGamer.h; sourceTree = "<group>"; };
 		19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket_AddGamer.m; sourceTree = "<group>"; };
+		3D8C4F7D1615E03D0080335E /* H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = H.png; sourceTree = "<group>"; };
+		3D8C4F7E1615E03D0080335E /* Z.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Z.png; sourceTree = "<group>"; };
 		3D919EA1160DF7D10006E88E /* PlayerLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLocation.h; sourceTree = "<group>"; };
 		3D919EA2160DF7D10006E88E /* PlayerLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerLocation.m; sourceTree = "<group>"; };
 		3D919EA5160DF88A0006E88E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 		C27951CC160F655500E63970 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3D8C4F7D1615E03D0080335E /* H.png */,
+				3D8C4F7E1615E03D0080335E /* Z.png */,
 				C2E7AE6716125922007615B2 /* background_v3.png */,
 				C2E7AE651612568D007615B2 /* background_v2.png */,
 				C2E7AE63161255B1007615B2 /* btnCreate_v1.png */,
@@ -504,6 +510,8 @@
 				C2E7AE64161255B1007615B2 /* btnCreate_v1.png in Resources */,
 				C2E7AE661612568D007615B2 /* background_v2.png in Resources */,
 				C2E7AE6816125922007615B2 /* background_v3.png in Resources */,
+				3D8C4F7F1615E03D0080335E /* H.png in Resources */,
+				3D8C4F801615E03D0080335E /* Z.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

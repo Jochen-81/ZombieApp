@@ -11,19 +11,14 @@
 #import <MapKit/MapKit.h>
 
 @interface PlayerLocation : NSObject <MKAnnotation> 
-//{
-//    NSString *_name;
-//    NSString *_address;
-//    CLLocationCoordinate2D _coordinate;
-//    BOOL decomission;
-//}
+
 
 @property (copy) NSString *name;
-@property (copy) NSString *address;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property int gamerStatus;
 @property BOOL decomission;
 
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;
+- (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate;
 
 
 @end
