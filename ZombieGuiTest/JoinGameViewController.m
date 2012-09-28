@@ -53,7 +53,7 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    //TODO this seems not to work when coming back from game
     self.gameList = [[NetWorkCom getNetWorkCom] getGamelist];
 }
 
