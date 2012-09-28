@@ -11,34 +11,38 @@
 @implementation PlayerLocation
 
 @synthesize name = _name;
-@synthesize address = _address;
 @synthesize coordinate = _coordinate;
 @synthesize decomission=_decomission;
+@synthesize gamerStatus;
 
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate {
+
+- (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate {
     if ((self = [super init])) {
         _name = [name copy];
-        _address = [address copy];
+        gamerStatus =status;
         _coordinate = coordinate;
         _decomission=NO;
     }
     return self;
 }
 
-- (NSString *)title {
-    if ([_name isKindOfClass:[NSNull class]]) 
-        return @"Unknown charge";
-    else
-        return _name;
-}
-
-- (NSString *)subtitle {
-    return _address;
-}
 
 - (NSString *)description{
-    return _name;
+    return _name ;
 }
 
+-(CLLocationCoordinate2D)coordinate{
+    return _coordinate;
+}
+
+-(NSString *)title {
+    return _name;
+}
+-(NSString *)address{
+    if (gamerStatus==0)
+        return @"BRAINZ!!";
+    else 
+        return @"RUN!!!";
+}
 
 @end

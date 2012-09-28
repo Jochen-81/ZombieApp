@@ -28,12 +28,12 @@ GameOrganizer* gameOrg;
 -(void)drawGamers:(NSMutableArray*)locations{
     
     for(PlayerLocation* loc in locations ){
-        [ self replacePin:loc.name withLocation:loc.coordinate];
+        [ self replacePin:loc.name status:loc.gamerStatus withLocation:loc.coordinate];
     }
 
 }
 
--(void)replacePin:(NSString *)gamerName  withLocation:(CLLocationCoordinate2D)location {
+-(void)replacePin:(NSString *)gamerName  status:(int)status withLocation:(CLLocationCoordinate2D)location {
     // flag Location for deletion later
     for (PlayerLocation* annotation in _mapView.annotations){
         if ([annotation.name isEqualToString:gamerName])
@@ -41,23 +41,32 @@ GameOrganizer* gameOrg;
     }
     //add new Location
     PlayerLocation *pLoc = nil;
-    pLoc = [[PlayerLocation alloc] initWithName:gamerName address:nil coordinate:location];
+    pLoc = [[PlayerLocation alloc] initWithName:gamerName status: status coordinate:location];
     [_mapView addAnnotation:pLoc];
 }
 
 
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
+- (MKAnnotationView *)mapView:(MKMapView *)mapV viewForAnnotation:(id <MKAnnotation>)annotation{
     MKAnnotationView* annotationView = nil;
     if ([annotation isKindOfClass:[PlayerLocation class]]){
        PlayerLocation* annotation2 = (PlayerLocation*)annotation;
         static NSString *identifier = @"MyView";   
-        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        annotationView = (MKAnnotationView *) [mapV dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         } else {
             annotationView.annotation = annotation;
         }
+        
+        UIImage * im;
+        if(annotation2.gamerStatus==1){
+            im = [UIImage imageNamed:@"Z.png"];
+        }else {
+            im = [UIImage imageNamed:@"H.png"];
+        }
+        annotationView.image = im;
+        
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         //delete the flagged Locations
