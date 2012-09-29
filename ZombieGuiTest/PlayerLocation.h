@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property int gamerStatus;
 @property BOOL decomission;
+@property NSString * title;
 
 - (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate;
 

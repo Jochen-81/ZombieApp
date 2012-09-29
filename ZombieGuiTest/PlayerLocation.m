@@ -14,6 +14,7 @@
 @synthesize coordinate = _coordinate;
 @synthesize decomission=_decomission;
 @synthesize gamerStatus;
+@synthesize title = _title;
 
 
 - (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate {
@@ -22,6 +23,7 @@
         gamerStatus =status;
         _coordinate = coordinate;
         _decomission=NO;
+        _title=name;
     }
     return self;
 }
@@ -42,7 +44,7 @@
     if (gamerStatus==0)
         return @"BRAINZ!!";
     else 
-        return @"RUN!!!";
+        return @"RUN!!";
 }
 
 @end

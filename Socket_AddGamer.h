@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "JsonSerializable.h"
 
-//TODO have todo something here with JsonSerializable,too tired now
 @interface Socket_AddGamer : NSObject<JsonSerializable>
 
 @property(nonatomic, copy) NSString *gameID;

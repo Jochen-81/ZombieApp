@@ -18,11 +18,14 @@
 @synthesize gamerName = _gamerName;
 @synthesize gamerStatus = _gamerStatus;
 @synthesize GameID =_GameID;
+@synthesize oponentsList= _oponentsList;
 bool inGame ;
+bool inFight;
 NSMutableArray * gamerList;
 
 NetWorkCom* netCom;
-MapViewController* delegate;
+MapViewController* delegateMapView;
+FightViewController* delegateFightView;
 
 + (id)getGameOrganizer {
     static GameOrganizer *gameOrg = nil;
@@ -65,7 +68,7 @@ MapViewController* delegate;
     [netCom createNewPlayer:[plist getUsername]];
     int gameID = [plist getGameID];
     if( gameID != 0 ){
-        [netCom addPlayerToGame:gameID ];
+        [netCom addPlayerToGame:gameID withState:self.gamerStatus+1 ];
         [netCom startReadingInputStream];
         [self startSendingMyLocation];
     }
@@ -83,10 +86,8 @@ MapViewController* delegate;
 
 -(void)startWithDelegate:(MapViewController*)cont{
     netCom =[NetWorkCom getNetWorkCom] ;
-     
-    NSLog(@"Non Polling Mode, waiting for Networkevents");
     if(cont!=nil){
-        [self setdelegate:cont];
+        [self setdelegateToGameOrganizer:cont];
     }
     [self startSendingMyLocation];
     [netCom startReadingInputStream];
@@ -94,10 +95,12 @@ MapViewController* delegate;
 }
 
 
--(void) setdelegate:(MapViewController*)viewController {
-    delegate = viewController;
+-(void) setdelegateToGameOrganizer:(MapViewController*)viewController{
+    delegateMapView = viewController;
 }
-
+-(void) setdelegateFightView:(FightViewController*)viewController{
+    delegateFightView = viewController;
+}
 
 -(void)handleInputFromNetwork:(NSString*)stream{
     
@@ -107,11 +110,11 @@ MapViewController* delegate;
    
     NSMutableArray* deletionArray = [[NSMutableArray alloc] initWithArray: gamerList]; // clone gameList , everyone is know up for deletion
     
-    NSLog(@"Von Server : %@",[dic description]);
+  //  NSLog(@"Von Server : %@",[dic description]);
     NSString* commandString = [ dic objectForKey:@"command"];
     NSMutableArray* gamerLocations = [[NSMutableArray alloc] initWithCapacity:1];
     
-    if ([commandString compare:@"listGamers"] ==0){
+    if ([commandString compare:@"listGamers"] ==0 && !inFight){
         
         NSArray* gamerDescription = [dic valueForKey:@"value"];
         
@@ -136,16 +139,43 @@ MapViewController* delegate;
         }
         for (NSString* s in deletionArray){
             [gamerList removeObject:s]; // Player that are no longer in the game are deleted from the list
-            [delegate removeAnnotationOfPlayer:s]; // pins are removed from the map
+            [delegateMapView removeAnnotationOfPlayer:s]; // pins are removed from the map
         }
-        [delegate drawGamers:gamerLocations];
+        [delegateMapView drawGamers:gamerLocations];
         
     }else if ([commandString compare:@"fight"]==0){
+        
         NSLog (@" ATTACKE !! !! ! !!");
+        inFight=true;
+        [delegateMapView changetoFightView];
+        
     }
-    else {
+    else if ([commandString compare:@"listOponents"]==0 && inFight){
+        
+        NSLog(@"listOponents ");
+        
+        NSArray* oponentsDescription = [dic valueForKey:@"value"];
+        
+        NSLog(@"%@",oponentsDescription);
+        NSMutableArray* opList = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        for (NSDictionary* dictionary in oponentsDescription ){
+            NSString* oponentName =[dictionary valueForKey:@"gamername"];
+            [opList addObject:oponentName  ];
+        }
+        _oponentsList = opList ;
+        [delegateFightView updateFight];    
+        
+    }else if ([commandString compare:@"listOponents"]==0 && !inFight){
+        
+        NSLog(@"listOponents ,aber da LIEF WAS SCHIEFFFFFFF!!");
+        
+    } else{
+        
         NSLog(@"unbekanntes commando : %@", commandString);
+        
     }
+
      
 }
 

@@ -22,6 +22,7 @@
 		19786C741600B5730089F833 /* ZombieGuiTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19786C731600B5730089F833 /* ZombieGuiTestTests.m */; };
 		19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CC1613404E0043DE64 /* OptionsViewController.m */; };
 		19F7A0D0161369F70043DE64 /* Socket_AddGamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */; };
+		3D8526331616F9FD0029ED6C /* FightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8526321616F9FD0029ED6C /* FightViewController.m */; };
 		3D8C4F7F1615E03D0080335E /* H.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C4F7D1615E03D0080335E /* H.png */; };
 		3D8C4F801615E03D0080335E /* Z.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D8C4F7E1615E03D0080335E /* Z.png */; };
 		3D919EA3160DF7D10006E88E /* PlayerLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D919EA2160DF7D10006E88E /* PlayerLocation.m */; };
@@ -107,6 +108,8 @@
 		19F7A0CC1613404E0043DE64 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
 		19F7A0CE161369F70043DE64 /* Socket_AddGamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket_AddGamer.h; sourceTree = "<group>"; };
 		19F7A0CF161369F70043DE64 /* Socket_AddGamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket_AddGamer.m; sourceTree = "<group>"; };
+		3D8526311616F9FD0029ED6C /* FightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FightViewController.h; sourceTree = "<group>"; };
+		3D8526321616F9FD0029ED6C /* FightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FightViewController.m; sourceTree = "<group>"; };
 		3D8C4F7D1615E03D0080335E /* H.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = H.png; sourceTree = "<group>"; };
 		3D8C4F7E1615E03D0080335E /* Z.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Z.png; sourceTree = "<group>"; };
 		3D919EA1160DF7D10006E88E /* PlayerLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerLocation.h; sourceTree = "<group>"; };
@@ -361,6 +364,8 @@
 				C2E7AE6A16125B1E007615B2 /* OwnNavigationController.m */,
 				19F7A0CB1613404E0043DE64 /* OptionsViewController.h */,
 				19F7A0CC1613404E0043DE64 /* OptionsViewController.m */,
+				3D8526311616F9FD0029ED6C /* FightViewController.h */,
+				3D8526321616F9FD0029ED6C /* FightViewController.m */,
 			);
 			name = ViewControllers;
 			path = ..;
@@ -591,6 +596,7 @@
 				C2E7AE6B16125B1E007615B2 /* OwnNavigationController.m in Sources */,
 				19F7A0CD1613404E0043DE64 /* OptionsViewController.m in Sources */,
 				19F7A0D0161369F70043DE64 /* Socket_AddGamer.m in Sources */,
+				3D8526331616F9FD0029ED6C /* FightViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

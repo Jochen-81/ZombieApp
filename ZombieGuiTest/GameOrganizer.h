@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MapViewController.h"
+#import "FightViewController.h"
 
 
 
@@ -15,18 +16,17 @@
 @property (strong,nonatomic) NSString* gamerName;
 @property int gamerStatus;
 @property int GameID;
+@property NSArray* oponentsList;
 
 +(id)getGameOrganizer;
 -(void)startWithDelegate:(UIViewController*)cont;
-
 -(void)handleInputFromNetwork:(NSString*)stream;
 -(void)updateMyLocation:(CLLocation*)newLocation;
-
 -(void)saveGameStatusAndStop;
 -(void)loadGameStatusAndRun;
-
 -(void)gamerLeavesGame;
 -(void)stopSendingMyLocation;
 -(void)startSendingMyLocation;
--(void)removeGamer:(NSString*)gamerName;
+-(void)setdelegateMapView:(UIViewController*)viewController;
+-(void)setdelegateFightView:(UIViewController*)viewController;
 @end

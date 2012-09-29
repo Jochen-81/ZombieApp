@@ -81,7 +81,7 @@ bool read_Ready ;
                 event = @"Unknown"; break;
                 
         }
-        NSLog(@"Event : %@",event);
+     //   NSLog(@"Event : %@",event);
     }
 }
 
@@ -117,7 +117,7 @@ bool read_Ready ;
     Socket_AddGamer *s_addGamer = [[Socket_AddGamer alloc] initWithGameID:str_id state:state];
     SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"addGamer" andValue:s_addGamer];               
     [self writeJson:msg.toJson ToStream:outputStream];
-    BOOL humanORzombie = [[inputStream readLine] boolValue];
+    BOOL humanORzombie = [[inputStream readLine]  boolValue];
     if(humanORzombie ==0){
         gameOrganizer.gamerStatus = 1;
     }else {
@@ -130,8 +130,12 @@ bool read_Ready ;
 -(BOOL) removePlayer{
     SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"removeGamer" andValue:nil];               
     [self writeJson:msg.toJson ToStream:outputStream];
-    BOOL successful = [[inputStream readLine] boolValue];
-    return successful;
+    NSString* s;
+    do{
+        s = [inputStream readLine];
+    }   while(!([s compare:@"true"]== 0 || [s compare:@"false"]== 0));
+    NSLog(@"nach remove player : %@",s);
+    return [s boolValue];
 }
 
 -(void) setLocation:(GPSLocation*)loc{
@@ -199,7 +203,6 @@ bool read_Ready ;
     outputStream = (__bridge NSOutputStream *)writeStream;
     [inputStream.stream setDelegate:self];
     [outputStream setDelegate:self];
-    //??? Output mode changed from NSDefaultRunLoopMode to NSRunLoopCommonModes
     [inputStream.stream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     [inputStream open];
@@ -219,7 +222,6 @@ bool read_Ready ;
         SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"bye" andValue: nil];               
         [self writeJson:msg.toJson ToStream:outputStream];
     }
-    // TODO  perhaps move all code into if condition
     [inputStream close];
     [inputStream.stream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
    

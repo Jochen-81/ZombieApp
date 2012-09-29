@@ -20,5 +20,6 @@
 
 -(void)drawGamers:(NSMutableArray*)PlayerLocation;
 -(void)removeAnnotationOfPlayer:(NSString*)gamerName;
+-(void)changetoFightView;
 
 @end

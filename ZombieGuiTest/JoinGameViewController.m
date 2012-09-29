@@ -151,8 +151,6 @@
     NSLog(@"Selected game: %d - %@", s.gameID, s.name);
     
     //add gamer to game
-    //TODO give MapView information if gamer is zombie or not
-    
     //TODO only join game if there is a network connection, perhaps look for general solution in NetWorkCom
     [[NetWorkCom getNetWorkCom] addPlayerToGame:s.gameID];
     

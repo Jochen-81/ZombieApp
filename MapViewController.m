@@ -48,6 +48,8 @@ GameOrganizer* gameOrg;
     PlayerLocation *pLoc = nil;
     pLoc = [[PlayerLocation alloc] initWithName:gamerName status: status coordinate:location];
     [_mapView addAnnotation:pLoc];
+    [_mapView selectAnnotation:pLoc animated:true];
+    [_mapView selectedAnnotations];
 }
 
 
@@ -71,12 +73,12 @@ GameOrganizer* gameOrg;
             im = [UIImage imageNamed:@"H.png"];
         }
         annotationView.image = im;
-        
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         //delete the flagged Locations
         [self performSelectorOnMainThread:@selector(deletePin:) withObject:annotation2.name waitUntilDone:NO];
     }
+    
     return annotationView;
 }
 
@@ -115,13 +117,6 @@ GameOrganizer* gameOrg;
     [super viewWillDisappear:animated];
 }
 
-- (void)mapView:(MKMapView *)MapView regionDidChangeAnimated:(BOOL)animated {
-
-}
-
-- (void)mapView:(MKMapView *)MapView regionWillChangeAnimated:(BOOL)animated {
-
-}
 
 -(void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
@@ -129,25 +124,34 @@ GameOrganizer* gameOrg;
 
 
 - (void)viewDidLoad{
-    NSLog(@"View Did Load");
+   // NSLog(@"View Did Load");
     _mapView.mapType = MKMapTypeStandard;
     [self defineRegion];
     _mapView.delegate=self;
     gameOrg = [GameOrganizer getGameOrganizer];
     [gameOrg startWithDelegate:self];
     [gameOrg startSendingMyLocation];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_v3.png"]];
+   // [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"View WIll Appear");
+   // NSLog(@"View WIll Appear");
 }
 
 /////////////////////////////////// Misc /////////////////////////////////////////////
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return NO;
+}
+
+-(void) changetoFightView{
+    [gameOrg setdelegateMapView:nil];
+    [gameOrg stopSendingMyLocation];
+    [self performSegueWithIdentifier: @"segMapViewToFightView" sender: self];
+    
 }
 
 
