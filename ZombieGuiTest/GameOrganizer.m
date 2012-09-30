@@ -182,7 +182,7 @@ FightViewController* delegateFightView;
         _inFight=false;
         NSLog(@"Fight OVER ");
         
-    }else if ([commandString compare:@"fightOver"]==0 && _inFight){
+    }else if ([commandString compare:@"fightOver"]==0 && !_inFight){
         NSLog(@"Fight OVER , aber da lief was schieff!");
         
     }else{

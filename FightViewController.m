@@ -35,10 +35,10 @@ GameOrganizer* gameOrg;
 
 
 -(void)updateFight:(NSArray*)opponents{
-    NSLog(@"updateFight");
     _opponentList = opponents;
     [self.tableView reloadData];
-    //TODO reload , and tell user thats its his turn
+    //TODO tell user thats its his turn
+    
 }
 
 
@@ -49,9 +49,8 @@ GameOrganizer* gameOrg;
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    [gameOrg setdelegateFightView:self];
-    NSLog(@"View Will Appear");
     gameOrg = [GameOrganizer getGameOrganizer];
+    [gameOrg setdelegateFightView:self];
     if(gameOrg.inFight)
         _opponentList=  gameOrg.oponentsList;
     
