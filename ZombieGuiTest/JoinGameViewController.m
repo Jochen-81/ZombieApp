@@ -55,6 +55,7 @@
     [super viewWillAppear:animated];
     //TODO this seems not to work when coming back from game
     self.gameList = [[NetWorkCom getNetWorkCom] getGamelist];
+    [self.tableView reloadData];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
