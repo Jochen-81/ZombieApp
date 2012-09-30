@@ -112,7 +112,9 @@ GameOrganizer* gameOrg;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    [gameOrg gamerLeavesGame];
+    if(!gameOrg.inFight){
+        [gameOrg gamerLeavesGame];
+    }
     [gameOrg stopSendingMyLocation];
     [super viewWillDisappear:animated];
 }
@@ -124,8 +126,7 @@ GameOrganizer* gameOrg;
 
 
 - (void)viewDidLoad{
-   // NSLog(@"View Did Load");
-    _mapView.mapType = MKMapTypeStandard;
+    _mapView.mapType = MKMapTypeSatellite; //MKMapTypeStandard;
     [self defineRegion];
     _mapView.delegate=self;
     gameOrg = [GameOrganizer getGameOrganizer];
@@ -138,7 +139,7 @@ GameOrganizer* gameOrg;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-   // NSLog(@"View WIll Appear");
+
 }
 
 /////////////////////////////////// Misc /////////////////////////////////////////////

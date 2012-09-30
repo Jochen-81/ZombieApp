@@ -234,6 +234,10 @@ bool read_Ready ;
     [self initNetworkComm];
 }
 
+-(void)attackGamerWithID:(NSString*)id andDmg:(int)dmg{
+    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"" andValue: nil];
+    [self writeJson:msg.toJson ToStream:outputStream];
 
+}
 
 @end

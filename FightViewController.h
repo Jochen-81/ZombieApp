@@ -10,6 +10,8 @@
 
 @interface FightViewController : UITableViewController
 
--(void)updateFight;
+@property NSArray* opponentList;
+
+-(void)updateFight:(NSArray*)oponents;
 
 @end

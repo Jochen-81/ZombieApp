@@ -17,6 +17,7 @@
 @property int gamerStatus;
 @property int GameID;
 @property NSArray* oponentsList;
+@property bool inFight;
 
 +(id)getGameOrganizer;
 -(void)startWithDelegate:(UIViewController*)cont;
@@ -29,4 +30,5 @@
 -(void)startSendingMyLocation;
 -(void)setdelegateMapView:(UIViewController*)viewController;
 -(void)setdelegateFightView:(UIViewController*)viewController;
+-(bool)attackGamerWithID:(NSString*)id andDamage:(int)dmg;
 @end

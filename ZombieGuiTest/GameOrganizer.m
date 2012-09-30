@@ -10,6 +10,7 @@
 #import "SBJsonParser.h"
 #import "PlayerLocation.h"
 #import "PlistHandler.h"
+#import "Socket_Opponent.h"
 
 
 
@@ -19,9 +20,10 @@
 @synthesize gamerStatus = _gamerStatus;
 @synthesize GameID =_GameID;
 @synthesize oponentsList= _oponentsList;
+@synthesize inFight =_inFight;
 bool inGame ;
-bool inFight;
 NSMutableArray * gamerList;
+bool myTurnToAttack;
 
 NetWorkCom* netCom;
 MapViewController* delegateMapView;
@@ -40,6 +42,7 @@ FightViewController* delegateFightView;
 - (id)init{
     if (self = [super init]) {
         gamerList = [[NSMutableArray alloc] initWithCapacity:1];
+        bool myTurnToAttack=false;
     }
     return self;
 }
@@ -87,7 +90,7 @@ FightViewController* delegateFightView;
 -(void)startWithDelegate:(MapViewController*)cont{
     netCom =[NetWorkCom getNetWorkCom] ;
     if(cont!=nil){
-        [self setdelegateToGameOrganizer:cont];
+        [self setdelegateMapView:cont];
     }
     [self startSendingMyLocation];
     [netCom startReadingInputStream];
@@ -95,7 +98,7 @@ FightViewController* delegateFightView;
 }
 
 
--(void) setdelegateToGameOrganizer:(MapViewController*)viewController{
+-(void) setdelegateMapView:(MapViewController*)viewController{
     delegateMapView = viewController;
 }
 -(void) setdelegateFightView:(FightViewController*)viewController{
@@ -114,7 +117,7 @@ FightViewController* delegateFightView;
     NSString* commandString = [ dic objectForKey:@"command"];
     NSMutableArray* gamerLocations = [[NSMutableArray alloc] initWithCapacity:1];
     
-    if ([commandString compare:@"listGamers"] ==0 && !inFight){
+    if ([commandString compare:@"listGamers"] ==0 && !_inFight){
         
         NSArray* gamerDescription = [dic valueForKey:@"value"];
         
@@ -146,13 +149,13 @@ FightViewController* delegateFightView;
     }else if ([commandString compare:@"fight"]==0){
         
         NSLog (@" ATTACKE !! !! ! !!");
-        inFight=true;
+        _inFight=true;
         [delegateMapView changetoFightView];
         
     }
-    else if ([commandString compare:@"listOponents"]==0 && inFight){
+    else if ([commandString compare:@"listOpponents"]==0 && _inFight){
         
-        NSLog(@"listOponents ");
+        NSLog(@"listOpponents ");
         
         NSArray* oponentsDescription = [dic valueForKey:@"value"];
         
@@ -160,23 +163,45 @@ FightViewController* delegateFightView;
         NSMutableArray* opList = [[NSMutableArray alloc] initWithCapacity:1];
         
         for (NSDictionary* dictionary in oponentsDescription ){
-            NSString* oponentName =[dictionary valueForKey:@"gamername"];
-            [opList addObject:oponentName  ];
+            NSString* oponentName =[dictionary valueForKey:@"gamerName"];
+            NSString* gamerID = [dictionary valueForKey:@"gamerID"];
+            bool isZombie = [[dictionary valueForKey:@"gamerID"]boolValue];
+            int health = [[dictionary valueForKey:@"health"]boolValue];
+            Socket_Opponent* op = [[Socket_Opponent alloc] initWithName:oponentName ID:gamerID status:isZombie health:health];
+            [opList addObject: op ];
         }
         _oponentsList = opList ;
-        [delegateFightView updateFight];    
+        [delegateFightView updateFight:_oponentsList];  
+        myTurnToAttack=true;
         
-    }else if ([commandString compare:@"listOponents"]==0 && !inFight){
+    }else if ([commandString compare:@"listOponents"]==0 && !_inFight){
         
         NSLog(@"listOponents ,aber da LIEF WAS SCHIEFFFFFFF!!");
         
-    } else{
+    }else if ([commandString compare:@"fightOver"]==0 && _inFight){
+        _inFight=false;
+        NSLog(@"Fight OVER ");
+        
+    }else if ([commandString compare:@"fightOver"]==0 && _inFight){
+        NSLog(@"Fight OVER , aber da lief was schieff!");
+        
+    }else{
         
         NSLog(@"unbekanntes commando : %@", commandString);
         
     }
 
      
+}
+
+-(bool)attackGamerWithID:(NSString*)id andDamage:(int)dmg{
+    if(myTurnToAttack){
+        [netCom attackGamerWithID:id andDmg:dmg];
+        myTurnToAttack=false;
+        return true;
+    }else {
+        return false;
+    }
 }
 
 @end

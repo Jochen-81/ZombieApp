@@ -7,6 +7,10 @@
 //
 
 #import "FightViewController.h"
+#import "Socket_Opponent.h"
+#include <stdlib.h>
+#import "GameOrganizer.h"
+
 
 @interface FightViewController ()
 
@@ -14,19 +18,23 @@
 
 @implementation FightViewController
 
+@synthesize opponentList=_opponentList;
+
+bool fightOver;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        fightOver=false;
     }
     return self;
 }
 
 
 
--(void)updateFight{
-    
+-(void)updateFight:(NSArray*)oponents{
+    _opponentList = oponents;
 }
 
 
@@ -47,26 +55,37 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+    //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    if(_opponentList==nil)
+        return 0;
+    else 
+        return _opponentList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
-    
+    if(_opponentList==nil){
+        return cell;
+    }else {
+        Socket_Opponent  *op = [self.opponentList objectAtIndex:indexPath.row];
+        UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
+        nameLabel.text = op.gamerName;
+        UILabel *healthLabel = (UILabel *)[cell viewWithTag:2];
+        healthLabel.text = [[NSString alloc] initWithFormat:@"%d",op.health];
+    }
     return cell;
+
 }
 
 
@@ -74,13 +93,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    Socket_Opponent *op = [self.opponentList objectAtIndex:indexPath.row];
+    int randomStrength = arc4random() % 100;
+    NSLog(@"Selected to Attack: %@ with strength %d", op.gamerName,randomStrength );
+    
+    [[GameOrganizer getGameOrganizer] attackGamerWithID:op.gamerName andDamage:randomStrength];   
+
 }
+
+
 
 @end
