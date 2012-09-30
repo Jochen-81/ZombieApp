@@ -414,13 +414,37 @@
                     <connections>
                         <segue destination="ksl-lR-LfY" kind="modal" identifier="segFightViewToMapView" id="1H2-8S-3o3"/>
                         <segue destination="X7s-VJ-6Or" kind="modal" identifier="segFightViewToJoinGameView" id="clW-Fp-xgq"/>
+                        <segue destination="qJD-cS-TvI" kind="popover" identifier="segPopoverFight" popoverAnchorView="GUu-We-pCa" id="Gg5-En-9z8">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="3624" y="679"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="xke-KU-fPK">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HzO-Th-Zqz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="qJD-cS-TvI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K7d-RN-SEp">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Launch.png" id="f1J-Fp-9FK">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1004"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="4533" y="-227"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Launch.png" width="768" height="1004"/>
         <image name="btnCreateGame_v1.png" width="556" height="346"/>
         <image name="btnCreate_v1.png" width="612" height="182"/>
         <image name="btnJoinGame_v1.png" width="586" height="435"/>
