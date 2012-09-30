@@ -13,7 +13,7 @@
 @synthesize damage =_damage;
 @synthesize gamerID = _gamerID;
 
--(void) initWithgamerID:(NSString*)gID andDamage:(int)dmg{
+-(Socket_AttackGamer*) initWithgamerID:(NSString*)gID andDamage:(int)dmg{
     _damage = dmg;
     _gamerID= gID;
 }

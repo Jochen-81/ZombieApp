@@ -9,6 +9,7 @@
 #import "OptionsViewController.h"
 #import "PlistHandler.h"
 #import "NetWorkCom.h"
+#import "GameOrganizer.h"
 
 @interface OptionsViewController ()
 
@@ -72,10 +73,10 @@
         sgNetworkConnection.selectedSegmentIndex = UISegmentedControlNoSegment;
         txtConnecting.hidden = NO;
         [self.view setNeedsDisplay];	
-        [[NetWorkCom getNetWorkCom] reconnect];
+        [[GameOrganizer getGameOrganizer] loadGameStatusAndRun];
         [self startMyTimer:self];
     } else if(sgNetworkConnection.selectedSegmentIndex == 1){ //"Unconnected" is pressed
-        [[NetWorkCom getNetWorkCom] closeConnection];
+        [[GameOrganizer getGameOrganizer] saveGameStatusAndStop];
         [self setSelectionAccordingToNetworkStatus];
         [self stopMyTimer:self];
     }

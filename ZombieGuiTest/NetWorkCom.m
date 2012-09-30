@@ -12,6 +12,7 @@
 #import "Classes/SBJson.h"
 #import "Socket_GameOverview.h"
 #import "Socket_AddGamer.h"
+#import "Socket_AttackGamer.h"
 
 
 
@@ -234,8 +235,9 @@ bool read_Ready ;
     [self initNetworkComm];
 }
 
--(void)attackGamerWithID:(NSString*)id andDmg:(int)dmg{
-    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"" andValue: nil];
+-(void)attackGamerWithID:(NSString*)gID andDmg:(int)dmg{
+    Socket_AttackGamer* sok_att = [[Socket_AttackGamer alloc]initWithgamerID:gID andDamage:dmg];
+    SocketMessage *msg = [SocketMessage createSocketMessageWithCommand:@"attack" andValue: sok_att];
     [self writeJson:msg.toJson ToStream:outputStream];
 
 }

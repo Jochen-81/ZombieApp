@@ -41,6 +41,6 @@
 -(NSString*)readLineFromInputStream;
 -(void)setDelegate:(id)gameOrg;
 
--(void)attackGamerWithID:(NSString*)id andDmg:(int)dmg;
+-(void)attackGamerWithID:(NSString*)gID andDmg:(int)dmg;
 
 @end
