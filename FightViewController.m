@@ -34,9 +34,9 @@ GameOrganizer* gameOrg;
 
 
 
--(void)updateFight:(NSArray*)oponents{
+-(void)updateFight:(NSArray*)opponents{
     NSLog(@"updateFight");
-    _opponentList = oponents;
+    _opponentList = opponents;
     [self.tableView reloadData];
     //TODO reload , and tell user thats its his turn
 }
