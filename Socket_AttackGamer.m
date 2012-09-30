@@ -13,16 +13,16 @@
 @synthesize damage =_damage;
 @synthesize gamerID = _gamerID;
 
--(Socket_AttackGamer*) initWithgamerID:(NSString*)gID andDamage:(int)dmg{
+-(id) initWithgamerID:(NSString*)gID andDamage:(int)dmg{
     _damage = dmg;
     _gamerID= gID;
+    return self;
 }
 
 -(NSDictionary*) toJson{
     if( self.gamerID ==nil )
         @throw [NSException exceptionWithName:@"NilValueException" reason:@"gameID is nil" userInfo:nil];
-    NSDictionary* dict=nil;
-    dict = [NSDictionary dictionaryWithObjectsAndKeys: self.gamerID,@"gameID",self.damage,@"strength", nil ]; 
+    NSDictionary* dict = [NSDictionary dictionaryWithObjectsAndKeys: self.gamerID,@"IDofAttackedGamer",[NSNumber numberWithInt:self.damage],@"strength", nil ]; 
     return dict;
 }
 

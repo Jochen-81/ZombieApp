@@ -102,9 +102,9 @@ GameOrganizer* gameOrg;
     
     Socket_Opponent *op = [self.opponentList objectAtIndex:indexPath.row];
     int randomStrength = arc4random() % 100;
-    NSLog(@"Selected to Attack: %@ with strength %d", op.gamerName,randomStrength );
+    NSLog(@"Selected to Attack: %@ with strength %d", op.gamerID,randomStrength );
     
-    [[GameOrganizer getGameOrganizer] attackGamerWithID:op.gamerName andDamage:randomStrength];   
+    [[GameOrganizer getGameOrganizer] attackGamerWithID:op.gamerID andDamage:randomStrength];   
 }
 
 

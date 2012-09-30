@@ -23,7 +23,7 @@
     if( self.gameID ==nil || ! (self.state == 0 || self.state == 1 || self.state == 2))
         @throw [NSException exceptionWithName:@"NilValueException" reason:@"gameID or state is nil" userInfo:nil];
     NSDictionary* dict=nil;
-    dict = [NSDictionary dictionaryWithObjectsAndKeys: self.gameID,@"gameID",self.state,@"state", nil ]; 
+    dict = [NSDictionary dictionaryWithObjectsAndKeys: self.gameID,@"gameID",[NSNumber numberWithInt:self.state],@"state", nil ]; 
     return dict;
 }
 

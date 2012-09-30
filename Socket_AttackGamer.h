@@ -14,7 +14,7 @@
 @property NSString* gamerID;
 @property int damage;
 
--(Socket_AttackGamer*) initWithgamerID:(NSString*)gID andDamage:(int)dmg;
+-(id) initWithgamerID:(NSString*)gID andDamage:(int)dmg;
 
 -(NSDictionary*) toJson;
 +(id)FromJsonToObject:(NSObject*)obj;
