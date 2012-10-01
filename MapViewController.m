@@ -126,7 +126,6 @@ GameOrganizer* gameOrg;
         [gameOrg gamerLeavesGame];
     }
     [gameOrg stopSendingMyLocation];
-    [[AudioPlayer getAudioPlayer] startPlaying];
     [super viewWillDisappear:animated];
 }
 

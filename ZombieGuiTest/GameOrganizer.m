@@ -189,7 +189,7 @@ FightViewController* delegateFightView;
             [delegateFightView performSegueWithIdentifier: @"segFightViewToMapView" sender: self];
         } else {
             NSLog(@"I am dead.");
-            [delegateFightView performSegueWithIdentifier: @"segFightViewToJoinGameView" sender: self];
+            [delegateFightView performSegueWithIdentifier: @"segFightViewToMainMenu" sender: self];
         }
         
 

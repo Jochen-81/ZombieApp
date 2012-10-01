@@ -10,6 +10,7 @@
 #import "Socket_GameOverview.h"
 #import "NetWorkCom.h"
 #import "LocationManager.h"
+#import "AudioPlayer.h"
 
 @interface JoinGameViewController ()
 
@@ -56,6 +57,8 @@
     //TODO this seems not to work when coming back from game
     self.gameList = [[NetWorkCom getNetWorkCom] getGamelist];
     [self.tableView reloadData];
+    [[AudioPlayer getAudioPlayer] startPlaying];
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
