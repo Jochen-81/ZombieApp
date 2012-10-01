@@ -82,7 +82,7 @@ bool read_Ready ;
                 event = @"Unknown"; break;
                 
         }
-     //   NSLog(@"Event : %@",event);
+        NSLog(@"Event : %@",event);
     }
 }
 
