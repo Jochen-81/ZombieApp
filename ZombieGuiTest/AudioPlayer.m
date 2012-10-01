@@ -41,7 +41,9 @@
     [audioPlayer pause];
 }
 -(void) startPlaying{
-    [audioPlayer play];    
+    if (![audioPlayer isPlaying]) {
+        [audioPlayer play];        
+    }
 }
 
 @end

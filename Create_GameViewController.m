@@ -8,6 +8,7 @@
 
 #import "Create_GameViewController.h"
 #import "NetWorkCom.h"
+#import "AudioPlayer.h"
 
 @interface Create_GameViewController ()
 
@@ -31,6 +32,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_v2.png"]];
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[AudioPlayer getAudioPlayer] startPlaying];
 }
 
 - (void)viewDidUnload
