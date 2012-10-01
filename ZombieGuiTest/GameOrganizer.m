@@ -198,10 +198,7 @@ FightViewController* delegateFightView;
     }else{
         
         NSLog(@"unbekanntes commando : %@", commandString);
-        
     }
-
-     
 }
 
 -(bool)attackGamerWithID:(NSString*)id andDamage:(int)dmg{
