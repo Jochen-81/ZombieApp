@@ -15,15 +15,17 @@
 @synthesize decomission=_decomission;
 @synthesize gamerStatus;
 @synthesize title = _title;
+@synthesize health=_health;
 
 
-- (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate {
+- (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate health:(int)heal{
     if ((self = [super init])) {
         _name = [name copy];
         gamerStatus =status;
         _coordinate = coordinate;
         _decomission=NO;
         _title=name;
+        _health =heal;
     }
     return self;
 }

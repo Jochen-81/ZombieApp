@@ -139,7 +139,8 @@ FightViewController* delegateFightView;
             }
             
             int gamerStatus = [[dictionary valueForKey:@"isZombie"] intValue ];
-            PlayerLocation* gamerloc = [[PlayerLocation alloc] initWithName:gamerName status:gamerStatus coordinate:location];
+            int health = [[dictionary valueForKey:@"health"] intValue ];
+            PlayerLocation* gamerloc = [[PlayerLocation alloc] initWithName:gamerName status:gamerStatus coordinate:location health:health];
             [gamerLocations addObject:gamerloc];
         }
         for (NSString* s in deletionArray){
@@ -156,7 +157,7 @@ FightViewController* delegateFightView;
         
     }
     else if ([commandString compare:@"listOpponents"]==0 && _inFight){
-        
+        myTurnToAttack=true;
         NSLog(@"listOpponents ");
         
         NSArray* oponentsDescription = [dic valueForKey:@"value"];
@@ -174,7 +175,6 @@ FightViewController* delegateFightView;
         }
         _oponentsList = opList ;
         [delegateFightView updateFight:_oponentsList];  
-        myTurnToAttack=true;
         
     }else if ([commandString compare:@"listOponents"]==0 && !_inFight){
         

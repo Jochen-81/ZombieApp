@@ -16,7 +16,8 @@
 @interface MapViewController :  UIViewController <MKMapViewDelegate,MKAnnotation>{
 }
 
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UILabel *healthLabel;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 -(void)drawGamers:(NSMutableArray*)PlayerLocation;
 -(void)removeAnnotationOfPlayer:(NSString*)gamerName;

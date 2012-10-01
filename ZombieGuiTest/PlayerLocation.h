@@ -18,8 +18,9 @@
 @property int gamerStatus;
 @property BOOL decomission;
 @property NSString * title;
+@property int health;
 
-- (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate;
+- (id)initWithName:(NSString*)name status:(int)status coordinate:(CLLocationCoordinate2D)coordinate health:(int)heal;
 
 
 @end

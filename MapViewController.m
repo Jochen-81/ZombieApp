@@ -16,18 +16,25 @@
 @implementation MapViewController
 
 
+@synthesize healthLabel = _healthLabel;
 @synthesize mapView =_mapView;
+
 GameOrganizer* gameOrg;
 
 
 
+//////////////////////////////// Health Mehtods  //////////////////////////////
+
+-(void)updateHealth:(int)health {
+    
+}
+
 //////////////////////////////// Draw Annotation Methods //////////////////////
 
 -(void)removeAnnotationOfPlayer:(NSString*)gamerName{
-    
-    
-    for (PlayerLocation* annotation in _mapView.annotations){
-        if ([annotation.name isEqualToString:gamerName])
+        
+   for (PlayerLocation* annotation in _mapView.annotations){
+       if ([annotation.name isEqualToString:gamerName])
             annotation.decomission = YES;
     }
     [self performSelectorOnMainThread:@selector(deletePin:) withObject:gamerName waitUntilDone:NO];
@@ -35,11 +42,15 @@ GameOrganizer* gameOrg;
 
 -(void)drawGamers:(NSMutableArray*)locations{
     for(PlayerLocation* loc in locations ){
-        [ self replacePin:loc.name status:loc.gamerStatus withLocation:loc.coordinate];
+        [ self replacePin:loc.name status:loc.gamerStatus withLocation:loc.coordinate health:loc.health];
+        
+        if ([loc.name isEqualToString:gameOrg.gamerName]){
+            _healthLabel.text = [[NSNumber numberWithInt:loc.health] stringValue];
+        }
     }
 }
 
--(void)replacePin:(NSString *)gamerName  status:(int)status withLocation:(CLLocationCoordinate2D)location {
+-(void)replacePin:(NSString *)gamerName  status:(int)status withLocation:(CLLocationCoordinate2D)location health:(int)heal{
     // flag Location for deletion later
     for (PlayerLocation* annotation in _mapView.annotations){
         if ([annotation.name isEqualToString:gamerName])
@@ -47,7 +58,7 @@ GameOrganizer* gameOrg;
     }
     //add new Location
     PlayerLocation *pLoc = nil;
-    pLoc = [[PlayerLocation alloc] initWithName:gamerName status: status coordinate:location];
+    pLoc = [[PlayerLocation alloc] initWithName:gamerName status: status coordinate:location health:heal];
     [_mapView addAnnotation:pLoc];
     [_mapView selectAnnotation:pLoc animated:true];
     [_mapView selectedAnnotations];
@@ -118,6 +129,7 @@ GameOrganizer* gameOrg;
 - (void)viewDidUnload{
     NSLog(@"View Did Unload");
     [self setMapView:nil];
+    [self setHealthLabel:nil];
     [super viewDidUnload];    
 }
 
@@ -149,6 +161,8 @@ GameOrganizer* gameOrg;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    _mapView.zoomEnabled=false;
+    _mapView.userInteractionEnabled=false;
     [[AudioPlayer getAudioPlayer] pausePlaying];
 }
 

@@ -59,6 +59,7 @@ GameOrganizer* gameOrg;
     [gameOrg setdelegateFightView:self];
     if(gameOrg.inFight)
     _opponentList=  gameOrg.oponentsList;
+    self.navigationItem.hidesBackButton=YES;
     
 }
 
