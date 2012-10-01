@@ -148,19 +148,17 @@ GameOrganizer* gameOrg;
 
 
 - (void)viewDidLoad{
-    _mapView.mapType = MKMapTypeSatellite; //MKMapTypeStandard;
-    _mapView.delegate=self;
-    _mapView.zoomEnabled=false;
-    _mapView.userInteractionEnabled=false;
-    gameOrg = [GameOrganizer getGameOrganizer];
-    [gameOrg startWithDelegate:self];
-    [gameOrg startSendingMyLocation];
+    [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_v3.png"]];
-       
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    _mapView.mapType = MKMapTypeSatellite; //MKMapTypeStandard;
+    _mapView.delegate=self;
+    gameOrg = [GameOrganizer getGameOrganizer];
+    [gameOrg startWithDelegate:self];
+    [gameOrg startSendingMyLocation];
     _mapView.zoomEnabled=false;
     _mapView.userInteractionEnabled=false;
     [[AudioPlayer getAudioPlayer] pausePlaying];
