@@ -42,7 +42,7 @@ GameOrganizer* gameOrg;
     if (gameOrg.gamerStatus == 0)
         alert = [[UIAlertView alloc] initWithTitle:@"Your Turn, choose Opponent" message:@"BRAAAIINNZZZ!!" delegate:self cancelButtonTitle:@"Ready" otherButtonTitles:nil];
     else
-        alert = [[UIAlertView alloc] initWithTitle:@"Your Turn, choose Opponent" message:@"BRAAAIINNZZZ!!" delegate:self cancelButtonTitle:@"Ready" otherButtonTitles:nil];
+        alert = [[UIAlertView alloc] initWithTitle:@"Your Turn, choose Opponent" message:@"Aim for the Head!!" delegate:self cancelButtonTitle:@"Ready" otherButtonTitles:nil];
 
     [alert show];
 }
