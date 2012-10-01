@@ -181,6 +181,16 @@ FightViewController* delegateFightView;
     }else if ([commandString compare:@"fightOver"]==0 && _inFight){
         _inFight=false;
         NSLog(@"Fight OVER ");
+        BOOL stillAlive = [[NSNumber numberWithInt:((NSInteger)[dic valueForKey:@"value"])] boolValue];
+        if(stillAlive){
+            NSLog(@"I am still alive.");
+            [delegateFightView performSegueWithIdentifier: @"segFightViewToMapView" sender: self];
+        } else {
+            NSLog(@"I am dead.");
+            [delegateFightView performSegueWithIdentifier: @"segFightViewToJoinGameView" sender: self];
+        }
+        
+
         
     }else if ([commandString compare:@"fightOver"]==0 && !_inFight){
         NSLog(@"Fight OVER , aber da lief was schieff!");

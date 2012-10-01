@@ -11,6 +11,7 @@
 #import "LocationManager.h"
 #import "PlistHandler.h"
 #import "GameOrganizer.h"
+#import "AudioPlayer.h"
 
 
 @implementation AppDelegate
@@ -23,6 +24,7 @@
     //init NetWorkCom (a singleton responsible for thet Networkconnection and Communication)
     [[NetWorkCom getNetWorkCom]setDelegate:[GameOrganizer getGameOrganizer] ];
     [LocationManager getLocationManager];
+    [[AudioPlayer getAudioPlayer] startPlaying];
     
     return YES;
 }

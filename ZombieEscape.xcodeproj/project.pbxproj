@@ -65,6 +65,9 @@
 		C2B3ECCA16076A32005D3F16 /* Socket_GameOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3ECC916076A32005D3F16 /* Socket_GameOverview.m */; };
 		C2B3ECCD16077088005D3F16 /* JoinGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3ECCC16077088005D3F16 /* JoinGameViewController.m */; };
 		C2B5050F16051CAD00EA29F5 /* PlistHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B5050E16051CAD00EA29F5 /* PlistHandler.m */; };
+		C2BDFB2D16189B5B00547B7F /* AudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C2BDFB2C16189B5B00547B7F /* AudioPlayer.m */; };
+		C2BDFB301618A19100547B7F /* 02 Braineating Zombies from Area 51.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C2BDFB2F1618A19100547B7F /* 02 Braineating Zombies from Area 51.mp3 */; };
+		C2BDFB321618A34C00547B7F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BDFB311618A34C00547B7F /* AVFoundation.framework */; };
 		C2E7AE5916123CD1007615B2 /* MainMenuCiewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */; };
 		C2E7AE5C16123D15007615B2 /* btnCreateGame_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5B16123D15007615B2 /* btnCreateGame_v1.png */; };
 		C2E7AE5E16123D4A007615B2 /* background_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2E7AE5D16123D4A007615B2 /* background_v1.png */; };
@@ -181,6 +184,10 @@
 		C2B3ECCC16077088005D3F16 /* JoinGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JoinGameViewController.m; path = ZombieGuiTest/JoinGameViewController.m; sourceTree = "<group>"; };
 		C2B5050D16051CAD00EA29F5 /* PlistHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlistHandler.h; sourceTree = "<group>"; };
 		C2B5050E16051CAD00EA29F5 /* PlistHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlistHandler.m; sourceTree = "<group>"; };
+		C2BDFB2B16189B5B00547B7F /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		C2BDFB2C16189B5B00547B7F /* AudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayer.m; sourceTree = "<group>"; };
+		C2BDFB2F1618A19100547B7F /* 02 Braineating Zombies from Area 51.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "02 Braineating Zombies from Area 51.mp3"; sourceTree = "<group>"; };
+		C2BDFB311618A34C00547B7F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C2E7AE5716123CD1007615B2 /* MainMenuCiewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuCiewControllerViewController.h; sourceTree = "<group>"; };
 		C2E7AE5816123CD1007615B2 /* MainMenuCiewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuCiewControllerViewController.m; sourceTree = "<group>"; };
 		C2E7AE5B16123D15007615B2 /* btnCreateGame_v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnCreateGame_v1.png; sourceTree = "<group>"; };
@@ -199,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BDFB321618A34C00547B7F /* AVFoundation.framework in Frameworks */,
 				C27CB70F160AFE1F002A22FC /* CoreLocation.framework in Frameworks */,
 				19786C491600B5730089F833 /* UIKit.framework in Frameworks */,
 				19786C4B1600B5730089F833 /* Foundation.framework in Frameworks */,
@@ -223,6 +231,7 @@
 		19786C391600B5730089F833 = {
 			isa = PBXGroup;
 			children = (
+				C2BDFB311618A34C00547B7F /* AVFoundation.framework */,
 				C27951DF160F6DC800E63970 /* Default-Portrait@2x~ipad.png */,
 				C27951DD160F6DC000E63970 /* Default-Portrait~ipad.png */,
 				C27951D7160F66B300E63970 /* icon.png */,
@@ -279,6 +288,8 @@
 				C2AB89DD160B8C2C0075696F /* SBJson (copied) */,
 				19786C4F1600B5730089F833 /* Supporting Files */,
 				C27A1D70160DC31D0034AF45 /* ViewControllers */,
+				C2BDFB2B16189B5B00547B7F /* AudioPlayer.h */,
+				C2BDFB2C16189B5B00547B7F /* AudioPlayer.m */,
 			);
 			name = ZombieEscape;
 			path = ZombieGuiTest;
@@ -426,6 +437,7 @@
 		C2B3ECC516074298005D3F16 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C2BDFB2F1618A19100547B7F /* 02 Braineating Zombies from Area 51.mp3 */,
 				C27951CC160F655500E63970 /* Images */,
 				C2B3ECC616074384005D3F16 /* ZombieGuiTest.plist */,
 			);
@@ -527,6 +539,7 @@
 				C2E7AE6816125922007615B2 /* background_v3.png in Resources */,
 				3D8C4F7F1615E03D0080335E /* H.png in Resources */,
 				3D8C4F801615E03D0080335E /* Z.png in Resources */,
+				C2BDFB301618A19100547B7F /* 02 Braineating Zombies from Area 51.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +622,7 @@
 				3D8526331616F9FD0029ED6C /* FightViewController.m in Sources */,
 				3D85263A161731030029ED6C /* Socket_Opponent.m in Sources */,
 				3D85263D161747260029ED6C /* Socket_AttackGamer.m in Sources */,
+				C2BDFB2D16189B5B00547B7F /* AudioPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

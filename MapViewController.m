@@ -10,6 +10,7 @@
 #import "GPSLocation.h"
 #import "PlayerLocation.h"
 #import "NetWorkCom.h"
+#import "AudioPlayer.h"
 
 
 
@@ -116,6 +117,7 @@ GameOrganizer* gameOrg;
         [gameOrg gamerLeavesGame];
     }
     [gameOrg stopSendingMyLocation];
+    [[AudioPlayer getAudioPlayer] startPlaying];
     [super viewWillDisappear:animated];
 }
 
@@ -139,6 +141,7 @@ GameOrganizer* gameOrg;
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[AudioPlayer getAudioPlayer] pausePlaying];
 
 }
 

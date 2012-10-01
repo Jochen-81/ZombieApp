@@ -52,9 +52,16 @@ GameOrganizer* gameOrg;
     gameOrg = [GameOrganizer getGameOrganizer];
     [gameOrg setdelegateFightView:self];
     if(gameOrg.inFight)
-        _opponentList=  gameOrg.oponentsList;
+    _opponentList=  gameOrg.oponentsList;
     
 }
+
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self performSegueWithIdentifier: @"segPopoverFight" sender: self];
+}
+
+
 - (void)viewDidUnload{
     [super viewDidUnload];
 }
