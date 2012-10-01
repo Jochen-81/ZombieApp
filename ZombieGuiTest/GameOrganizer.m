@@ -156,7 +156,7 @@ FightViewController* delegateFightView;
         [delegateMapView changetoFightView];
         
     }
-    else if ([commandString compare:@"listOpponents"]==0 && _inFight){
+    else if ([commandString compare:@"listFightingGamers"]==0 && _inFight){
         myTurnToAttack=true;
         NSLog(@"listOpponents ");
         
@@ -186,7 +186,7 @@ FightViewController* delegateFightView;
         NSString* stillAlive = [[dic valueForKey:@"value"] description];
         if([stillAlive compare:@"0"] != 0){
             NSLog(@"I am still alive.");
-            [delegateFightView performSegueWithIdentifier: @"segFightViewToMapView" sender: self];
+            [[delegateFightView navigationController] popViewControllerAnimated:YES];
         } else {
             NSLog(@"I am dead.");
             [delegateFightView performSegueWithIdentifier: @"segFightViewToMainMenu" sender: self];
