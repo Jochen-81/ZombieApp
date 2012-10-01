@@ -101,7 +101,8 @@ GameOrganizer* gameOrg;
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
     nameLabel.text = op.gamerName;
     UILabel *healthLabel = (UILabel *)[cell viewWithTag:2];
-    healthLabel.text = [[NSString alloc] initWithFormat:@"%d",op.health];
+    NSLog(@"Health : %d",op.health);
+    healthLabel.text = [[NSString alloc] initWithFormat:@"%i",op.health];
     
     return cell;
 }

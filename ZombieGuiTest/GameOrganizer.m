@@ -167,8 +167,8 @@ FightViewController* delegateFightView;
         for (NSDictionary* dictionary in oponentsDescription ){
             NSString* oponentName =[dictionary valueForKey:@"gamerName"];
             NSString* gamerID = [dictionary valueForKey:@"gamerID"];
-            bool isZombie = [[dictionary valueForKey:@"gamerID"]boolValue];
-            int health = [[dictionary valueForKey:@"health"]boolValue];
+            bool isZombie = [[dictionary valueForKey:@"isZombie"]boolValue];
+            int health = [[dictionary valueForKey:@"health"]intValue];
             Socket_Opponent* op = [[Socket_Opponent alloc] initWithName:oponentName ID:gamerID status:isZombie health:health];
             [opList addObject: op ];
         }
