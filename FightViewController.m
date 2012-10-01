@@ -20,14 +20,14 @@
 
 @synthesize opponentList=_opponentList;
 
-bool fightOver;
 GameOrganizer* gameOrg;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        fightOver=false;
+
     }
     return self;
 }
@@ -37,8 +37,14 @@ GameOrganizer* gameOrg;
 -(void)updateFight:(NSArray*)opponents{
     _opponentList = opponents;
     [self.tableView reloadData];
-    //TODO tell user thats its his turn
     
+    UIAlertView *alert;
+    if (gameOrg.gamerStatus == 0)
+        alert = [[UIAlertView alloc] initWithTitle:@"Your Turn, choose Opponent" message:@"BRAAAIINNZZZ!!" delegate:self cancelButtonTitle:@"Ready" otherButtonTitles:nil];
+    else
+        alert = [[UIAlertView alloc] initWithTitle:@"Your Turn, choose Opponent" message:@"BRAAAIINNZZZ!!" delegate:self cancelButtonTitle:@"Ready" otherButtonTitles:nil];
+
+    [alert show];
 }
 
 
@@ -58,7 +64,6 @@ GameOrganizer* gameOrg;
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self performSegueWithIdentifier: @"segPopoverFight" sender: self];
 }
 
 

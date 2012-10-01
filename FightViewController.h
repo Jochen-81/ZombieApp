@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FightViewController : UITableViewController
+
+@interface FightViewController : UITableViewController <UIAlertViewDelegate>
 
 @property NSArray* opponentList;
 
 -(void)updateFight:(NSArray*)oponents;
-
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
 @end

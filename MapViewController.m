@@ -155,7 +155,7 @@ GameOrganizer* gameOrg;
 /////////////////////////////////// Misc /////////////////////////////////////////////
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
-    return NO;
+    return YES;
 }
 
 -(void) changetoFightView{
