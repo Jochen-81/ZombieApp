@@ -59,6 +59,7 @@
         
         int gameID = [[NetWorkCom getNetWorkCom] createNewGame: gamename];
         [[NetWorkCom getNetWorkCom] addPlayerToGame:gameID];
+        [self performSegueWithIdentifier: @"segCreateViewToMapView" sender: self];
 
         
     } else { //Connection is ready but gamename is empty
