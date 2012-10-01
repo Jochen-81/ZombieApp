@@ -37,7 +37,7 @@ GameOrganizer* gameOrg;
 -(void)updateFight:(NSArray*)opponents{
     _opponentList = opponents;
     [self.tableView reloadData];
-    
+  
     UIAlertView *alert;
     if (gameOrg.gamerStatus == 0)
         alert = [[UIAlertView alloc] initWithTitle:@"Your Turn, choose Opponent" message:@"BRAAAIINNZZZ!!" delegate:self cancelButtonTitle:@"Ready" otherButtonTitles:nil];
