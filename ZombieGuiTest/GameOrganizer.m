@@ -182,9 +182,9 @@ FightViewController* delegateFightView;
         
     }else if ([commandString compare:@"fightOver"]==0 && _inFight){
         _inFight=false;
-        NSLog(@"Fight OVER ");
-        BOOL stillAlive = [[NSNumber numberWithInt:((NSInteger)[dic valueForKey:@"value"])] boolValue];
-        if(stillAlive){
+        NSLog(@"Fight OVER %@", [[dic valueForKey:@"value"] description]);
+        NSString* stillAlive = [[dic valueForKey:@"value"] description];
+        if([stillAlive compare:@"0"] != 0){
             NSLog(@"I am still alive.");
             [delegateFightView performSegueWithIdentifier: @"segFightViewToMapView" sender: self];
         } else {
