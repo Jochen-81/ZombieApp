@@ -13,8 +13,6 @@
 #import "AudioPlayer.h"
 
 
-
-
 @implementation MapViewController
 
 
@@ -26,6 +24,8 @@ GameOrganizer* gameOrg;
 //////////////////////////////// Draw Annotation Methods //////////////////////
 
 -(void)removeAnnotationOfPlayer:(NSString*)gamerName{
+    
+    
     for (PlayerLocation* annotation in _mapView.annotations){
         if ([annotation.name isEqualToString:gamerName])
             annotation.decomission = YES;
@@ -104,6 +104,15 @@ GameOrganizer* gameOrg;
     [_mapView setRegion:region animated:NO];
 }
 
+- (void)centerMapOnLocation:(CLLocation *)location {
+    
+    MKCoordinateRegion region;  
+    region.center = [location coordinate];
+    region.span.latitudeDelta =0.002;
+    region.span.longitudeDelta =0.002;
+    [_mapView setRegion:region animated:NO];
+}
+
 ///////////////////////////// View Load & Unload Methodes ///////////////////////////
 
 - (void)viewDidUnload{
@@ -129,20 +138,19 @@ GameOrganizer* gameOrg;
 
 - (void)viewDidLoad{
     _mapView.mapType = MKMapTypeSatellite; //MKMapTypeStandard;
-    [self defineRegion];
     _mapView.delegate=self;
+    _mapView.zoomEnabled=false;
+    _mapView.userInteractionEnabled=false;
     gameOrg = [GameOrganizer getGameOrganizer];
     [gameOrg startWithDelegate:self];
     [gameOrg startSendingMyLocation];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_v3.png"]];
-   // [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-    
+       
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[AudioPlayer getAudioPlayer] pausePlaying];
-
 }
 
 /////////////////////////////////// Misc /////////////////////////////////////////////
@@ -152,11 +160,10 @@ GameOrganizer* gameOrg;
 }
 
 -(void) changetoFightView{
+    NSLog(@"Change to Fight View");
     [gameOrg setdelegateMapView:nil];
     [gameOrg stopSendingMyLocation];
     [self performSegueWithIdentifier: @"segMapViewToFightView" sender: self];
-    
 }
-
 
 @end

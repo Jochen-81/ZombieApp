@@ -21,5 +21,6 @@
 -(void)drawGamers:(NSMutableArray*)PlayerLocation;
 -(void)removeAnnotationOfPlayer:(NSString*)gamerName;
 -(void)changetoFightView;
+-(void)centerMapOnLocation:(CLLocation *)location;
 
 @end

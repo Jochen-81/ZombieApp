@@ -83,8 +83,10 @@ FightViewController* delegateFightView;
 }
 
 -(void)updateMyLocation:(CLLocation*)newLocation{
-    if(inGame)
+    if(inGame){
         [netCom setLocation:[[GPSLocation alloc]initWithLong:[newLocation coordinate].longitude AndLat:[newLocation coordinate].latitude ]];
+        [delegateMapView centerMapOnLocation:newLocation];
+    }
 }
 
 -(void)startWithDelegate:(MapViewController*)cont{
