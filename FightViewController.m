@@ -18,25 +18,49 @@
 
 @implementation FightViewController
 
-@synthesize opponentList=_opponentList;
+@synthesize OpponentTableView;
+@synthesize AlliesTableView;
 
 GameOrganizer* gameOrg;
+bool gamerStatus;
+
 
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithStyle:style];
+    self = [super init];
     if (self) {
-
+        gameOrg = [GameOrganizer getGameOrganizer];
     }
     return self;
 }
 
 
 
--(void)updateFight:(NSArray*)opponents{
-    _opponentList = opponents;
-    [self.tableView reloadData];
+-(void)updateFight:(NSArray*)fightingGamers{
+    NSLog(@"UpdateFight");
+    
+    bool isZombie = ! gameOrg.gamerStatus;
+    NSString* name = gameOrg.gamerName;
+    
+    arrayForAlliesTable = [NSMutableArray array];
+    arrayForOpponentsTable =  [NSMutableArray array] ;
+    
+    for (Socket_Opponent* s in fightingGamers){
+        if ( !(s.isZombie ^ isZombie) ){
+           if( [s.gamerName compare:name] != 0){
+               [arrayForAlliesTable addObject:s];
+           }else {
+               //TODO eigene HEalth aktualisieren
+           }
+        }
+        else {
+            [arrayForOpponentsTable addObject:s];
+        }
+    }
+    
+    [OpponentTableView reloadData];
+    [AlliesTableView reloadData];
   
     UIAlertView *alert;
     if (gameOrg.gamerStatus == 0)
@@ -49,26 +73,36 @@ GameOrganizer* gameOrg;
 
 
 - (void)viewDidLoad{
+    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_v3.png"]];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated{
-    gameOrg = [GameOrganizer getGameOrganizer];
+    NSLog(@"viewWillAppear1");
+    [OpponentTableView setDelegate:self];
+    [AlliesTableView setDelegate:self];
+    [OpponentTableView setDataSource:self];
+    [AlliesTableView setDataSource:self];
+    NSLog(@"viewWillAppear2");
+    if(gameOrg.myTurnToAttack)
+        [self updateFight:gameOrg.oponentsList];
     [gameOrg setdelegateFightView:self];
-    if(gameOrg.inFight)
-    _opponentList=  gameOrg.oponentsList;
+    NSLog(@"viewWillAppear3");
     self.navigationItem.hidesBackButton=YES;
     
 }
 
 -(void) viewDidAppear:(BOOL)animated{
+    NSLog(@"viewDidAppear");
     [super viewDidAppear:animated];
 }
 
 
 - (void)viewDidUnload{
+    [self setOpponentTableView:nil];
+    [self setAlliesTableView:nil];
     [super viewDidUnload];
 }
 
@@ -85,20 +119,30 @@ GameOrganizer* gameOrg;
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if(_opponentList==nil)
-        return 0;
-    else 
-        return _opponentList.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (tableView.tag==11) {
+        return arrayForOpponentsTable.count;
+    }else {
+        return  arrayForAlliesTable.count;  
+    }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"cellforRow");
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-
-    Socket_Opponent  *op = [self.opponentList objectAtIndex:indexPath.row];
+    if(!cell)
+        cell = [[UITableViewCell alloc]init];
+    Socket_Opponent  *op ;
+        
+    if (tableView.tag==11) {
+        op = [arrayForOpponentsTable objectAtIndex:indexPath.row];
+    } else {
+        op = [arrayForAlliesTable objectAtIndex:indexPath.row];
+    }
+    
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:1];
     nameLabel.text = op.gamerName;
     UILabel *healthLabel = (UILabel *)[cell viewWithTag:2];
@@ -113,11 +157,17 @@ GameOrganizer* gameOrg;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    Socket_Opponent *op = [self.opponentList objectAtIndex:indexPath.row];
-    int randomStrength = arc4random() % 100;
-    NSLog(@"Selected to Attack: %@ with strength %d", op.gamerID,randomStrength );
-    
-    [[GameOrganizer getGameOrganizer] attackGamerWithID:op.gamerID andDamage:randomStrength];   
+    if(tableView.tag == 11){
+        Socket_Opponent *op = [arrayForOpponentsTable objectAtIndex:indexPath.row];
+        int randomStrength = arc4random() % 100;
+        NSLog(@"Selected to Attack: %@ with strength %d", op.gamerID,randomStrength );
+        
+        [[GameOrganizer getGameOrganizer] attackGamerWithID:op.gamerID andDamage:randomStrength];   
+    }
+    else {
+        
+    }
+
 }
 
 

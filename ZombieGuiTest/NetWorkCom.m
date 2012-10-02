@@ -61,8 +61,10 @@ bool read_Ready ;
         switch(eventCode) {
         
             case NSStreamEventHasBytesAvailable:   
-                event = @"Lese...";
-               [gameOrganizer handleInputFromNetwork:inputStream.readLine];
+                event = inputStream.readLine;
+                NSLog(@"%@", [NSThread currentThread]);
+               // [gameOrganizer performSelectorOnMainThread:@selector(handleInputFromNetwork:) withObject:event waitUntilDone:NO ];
+                [NSThread detachNewThreadSelector:@selector(handleInputFromNetwork:) toTarget:gameOrganizer withObject:event];
                 break;
             case NSStreamEventNone:
                 event = @"NSStreamEventNone";
@@ -94,7 +96,8 @@ bool read_Ready ;
 
 
 -(int) createNewPlayer:(NSString*)playerName {
-    SocketMessage* msg = [SocketMessage createSocketMessageWithCommand:@"newGamer" andValue:playerName];               
+    SocketMessage* msg = [SocketMessage createSocketMessageWithCommand:@"newGamer" andValue:playerName];  
+    gameOrganizer.gamerName =playerName;
     [self writeJson:msg.toJson ToStream:outputStream];
     int gamerID = [[inputStream readLine] intValue];
     NSLog(@"new gamerID = %d", gamerID);
@@ -120,9 +123,9 @@ bool read_Ready ;
     [self writeJson:msg.toJson ToStream:outputStream];
     BOOL humanORzombie = [[inputStream readLine]  boolValue];
     if(humanORzombie ==0){
-        gameOrganizer.gamerStatus = 1;
+        gameOrganizer.gamerStatus = 0;
     }else {
-        gameOrganizer.gamerStatus =2;
+        gameOrganizer.gamerStatus =1;
     }
     NSLog(@"Gamer is human: %d", humanORzombie);
     return humanORzombie;

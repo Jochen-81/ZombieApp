@@ -21,9 +21,10 @@
 @synthesize GameID =_GameID;
 @synthesize oponentsList= _oponentsList;
 @synthesize inFight =_inFight;
-bool inGame ;
+volatile bool inGame ;
 NSMutableArray * gamerList;
-bool myTurnToAttack;
+NSLock *myLock = nil;
+@synthesize myTurnToAttack= _myTurnToAttack;
 
 NetWorkCom* netCom;
 MapViewController* delegateMapView;
@@ -108,7 +109,10 @@ FightViewController* delegateFightView;
 }
 
 -(void)handleInputFromNetwork:(NSString*)stream{
+   
+    NSLog(@"handleInputFromNetwork %@", [NSThread currentThread]);
     
+    [myLock lock];
     // Create SBJSON object to parse JSON
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *dic = [parser objectWithString:stream];
@@ -153,11 +157,14 @@ FightViewController* delegateFightView;
         
         NSLog (@" ATTACKE !! !! ! !!");
         _inFight=true;
-        [delegateMapView changetoFightView];
+        while(![ delegateMapView returnViewStatus]) {
+            ;
+        }
+            [delegateMapView changetoFightView];
         
     }
     else if ([commandString compare:@"listFightingGamers"]==0 && _inFight){
-        myTurnToAttack=true;
+        _myTurnToAttack=true;
         NSLog(@"listOpponents ");
         
         NSArray* oponentsDescription = [dic valueForKey:@"value"];
@@ -201,12 +208,13 @@ FightViewController* delegateFightView;
         
         NSLog(@"unbekanntes commando : %@", commandString);
     }
+    [myLock unlock];
 }
 
 -(bool)attackGamerWithID:(NSString*)id andDamage:(int)dmg{
-    if(myTurnToAttack){
+    if(_myTurnToAttack){
         [netCom attackGamerWithID:id andDmg:dmg];
-        myTurnToAttack=false;
+        _myTurnToAttack=false;
         return true;
     }else {
         return false;

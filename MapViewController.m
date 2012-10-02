@@ -20,6 +20,8 @@
 @synthesize mapView =_mapView;
 
 GameOrganizer* gameOrg;
+volatile bool viewAppeared = false;
+
 
 
 
@@ -164,13 +166,24 @@ GameOrganizer* gameOrg;
     [[AudioPlayer getAudioPlayer] pausePlaying];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    viewAppeared = true;
+    
+}
+
 /////////////////////////////////// Misc /////////////////////////////////////////////
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return YES;
 }
 
+-(bool)returnViewStatus{
+    return viewAppeared;
+}
+
 -(void) changetoFightView{
+
     NSLog(@"Change to Fight View");
     [gameOrg setdelegateMapView:nil];
     [gameOrg stopSendingMyLocation];

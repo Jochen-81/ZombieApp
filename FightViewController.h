@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FightViewController : UITableViewController <UIAlertViewDelegate>
+@interface FightViewController : UIViewController<UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>
+{
+    NSMutableArray *arrayForOpponentsTable;
+    NSMutableArray *arrayForAlliesTable;
+}
 
-@property NSArray* opponentList;
+@property (strong, nonatomic) IBOutlet UITableView *OpponentTableView;
+@property (strong, nonatomic) IBOutlet UITableView *AlliesTableView;
 
--(void)updateFight:(NSArray*)oponents;
+-(void)updateFight:(NSArray*)fightingGamers;
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex;
 @end

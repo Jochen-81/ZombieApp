@@ -23,5 +23,5 @@
 -(void)removeAnnotationOfPlayer:(NSString*)gamerName;
 -(void)changetoFightView;
 -(void)centerMapOnLocation:(CLLocation *)location;
-
+-(bool)returnViewStatus;
 @end

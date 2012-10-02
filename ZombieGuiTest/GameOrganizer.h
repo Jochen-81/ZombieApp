@@ -18,6 +18,7 @@
 @property int GameID;
 @property NSArray* oponentsList;
 @property bool inFight;
+@property bool myTurnToAttack;
 
 +(id)getGameOrganizer;
 -(void)startWithDelegate:(UIViewController*)cont;
